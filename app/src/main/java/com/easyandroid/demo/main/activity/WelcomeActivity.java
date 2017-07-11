@@ -29,6 +29,8 @@ import com.easyandroid.demo.weather.activity.WeatherActivity;
 import com.jakewharton.rxbinding.view.RxView;
 import com.trello.rxlifecycle.android.ActivityEvent;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.Bind;
@@ -39,6 +41,8 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
 
     @Bind(R.id.tvLocation)
     TextView tvLocation;
+    @Bind(R.id.tvNetSpeed)
+    TextView tvNetSpeed;
     @Bind(R.id.fbLocation)
     FloatingActionButton fbLocation;
 
@@ -63,8 +67,22 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
         initView();
 //        testRx();
         testRxBus();
-
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                final long rxBytes = getRxBytes();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        LogUtil.d("net","网速："+rxBytes+"KB");
+                        tvNetSpeed.setText("网速："+rxBytes+"KB");
+                    }
+                });
+            }
+        },2000,2000);
     }
+
+    Timer timer = new Timer();
 
     private long getRxBytes(){
         return TrafficStats.getUidRxBytes(getApplicationInfo().uid)==TrafficStats.UNSUPPORTED ? 0 :(TrafficStats.getTotalRxBytes()/1024);//转为KB
