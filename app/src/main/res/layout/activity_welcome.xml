@@ -60,6 +60,14 @@
                 android:textColor="@color/colorTextPrimary"
                 android:textAllCaps="false"
                 android:text="@string/dataBindingDemo"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="1111111"
+                android:imeOptions="normal"
+                android:textColor="@color/colorPrimary"
+                android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ"
+                android:singleLine="true" />
             <ToggleButton
                 android:id="@+id/togglebutton"
                 android:layout_width="match_parent"
@@ -69,10 +77,6 @@
                 android:checked="true"
                 android:textOff=""
                 android:textOn="" />
-            <TextView
-                android:id="@+id/tvNetSpeed"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <!-- 侧边菜单-->
