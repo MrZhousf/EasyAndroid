@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled false
+//        resourcePrefix "new_easy"//资源名前缀：避免资源冲突
+    }
+    dataBinding {
+        enabled = true
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+        preDexLibraries = false
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            // 显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true//不打包无用资源
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("debug.jks")
+            storePassword "123456"
+            keyAlias "easyandroid"
+            keyPassword "123456"
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
+    lintOptions {
+        disable "ResourceType"//不检查资源类型
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile rootProject.ext.dependencies.appcompat_v7
+    compile rootProject.ext.dependencies.design
+    compile rootProject.ext.dependencies.cardview_v7
+    compile rootProject.ext.dependencies.recyclerview_v7
+    compile rootProject.ext.dependencies.percent
+    compile rootProject.ext.dependencies.butterknife
+    compile rootProject.ext.dependencies.glide
+    compile rootProject.ext.dependencies.gson
+    compile rootProject.ext.dependencies.eventbus
+    compile(rootProject.ext.dependencies.okhttp) {
+        exclude(module: 'appcompat-v7')
+    }
+    compile rootProject.ext.dependencies.ormlite
+    //Rx
+    compile(rootProject.ext.dependencies.rxandroid) {
+        exclude(module: 'jsr305')
+    }
+    compile rootProject.ext.dependencies.rxcache
+//    compile rootProject.ext.dependencies.retrofit
+    //    compile "com.squareup.okhttp3:logging-interceptor:3.3.1"
+
+
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
+}
+

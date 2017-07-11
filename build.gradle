@@ -1,0 +1,23 @@
+apply from: "config.gradle"
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.1'
+        classpath 'me.tatarka:gradle-retrolambda:3.2.0'
+    }
+    tasks.withType(JavaCompile) { options.encoding = "UTF-8" }
+    tasks.withType(Javadoc){ options.encoding = "UTF-8" }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

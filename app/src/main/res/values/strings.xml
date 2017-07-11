@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">EasyAndroid</string>
+
+    <string name="settings">设置</string>
+    <string name="about_us">关于</string>
+    <string name="search">搜索</string>
+    <string name="currentLocation">当前位置：</string>
+    <string name="my_email">我的邮箱</string>
+    <string name="about_author">关于作者</string>
+    <string name="file_manager">文件管理</string>
+    <string name="more">更多</string>
+    <string name="open">打开</string>
+    <string name="close">关闭</string>
+    <string name="weatherDemo">天气模块</string>
+    <string name="cameraDemo">相机模块</string>
+    <string name="dbDemo">数据库模块</string>
+    <string name="dataBindingDemo">DataBinding</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

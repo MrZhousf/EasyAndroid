@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    <variable
+        name="info"
+        type="com.easyandroid.demo.databinding.Info"/>
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/activity_databinding"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.easyandroid.demo.databinding.DataBindingActivity">
+
+        <!-- 标题栏-->
+        <include layout="@layout/toolbar_main" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:text="@={info.title}"
+                android:textColor="@color/colorTextPrimary"
+                />
+
+            <Button
+                android:id="@+id/modifyBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="修改"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextPrimary"
+                />
+        </LinearLayout>
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={info.content}"
+            android:textAllCaps="false"
+            android:textColor="@color/colorTextPrimary"
+        />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={info.date}"
+            android:textAllCaps="false"
+            android:textColor="@color/colorTextPrimary"
+        />
+
+    </LinearLayout>
+</layout>

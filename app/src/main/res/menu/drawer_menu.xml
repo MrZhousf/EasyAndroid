@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_email"
+            android:icon="@mipmap/mail_open"
+            android:title="@string/my_email" />
+        <item
+            android:id="@+id/navigation_author"
+            android:icon="@mipmap/person"
+            android:title="@string/about_author"
+            />
+    </group>
+    <item android:title="更多">
+        <menu>
+            <item
+                android:id="@+id/navigation_file"
+                android:icon="@mipmap/folder"
+                android:title="@string/file_manager" />
+        </menu>
+    </item>
+
+</menu>
