@@ -31,7 +31,7 @@ ext{
             //网络请求
             okhttp :"com.zhousf.lib:okhttp3:2.8.6",
             //数据库
-            ormlite :"com.zhousf.lib:easydb:1.6.3",
+            ormlite :"com.zhousf.lib:easydb:1.7.1",
             //Rx
             rxandroid :"com.trello:rxlifecycle-android:1.0",
             //RxCache

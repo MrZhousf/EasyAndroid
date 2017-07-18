@@ -55,12 +55,12 @@ public class TestDBActivity extends BaseActivity {
                 for (int i = 1; i <= 20; i++) {
                     addList.add(new SimpleData(i,"信息"+i));
                 }
-                int line = dao.create(addList);
+                int line = dao.add(addList);
                 tvResult.setText("增加总条数："+line);
                 break;
             case R.id.queryBtn:
                 //查询
-                list = dao.queryForAll();
+                list = dao.queryAll();
                 printList(list);
                 break;
             case R.id.queryWhereBtn:
@@ -78,7 +78,7 @@ public class TestDBActivity extends BaseActivity {
                 break;
             case R.id.updateBtn:
                 //更新
-                list = dao.queryForAll();
+                list = dao.queryAll();
                 if(!list.isEmpty()){
                     SimpleData data = list.get(0);
                     data.description = "更新内容";
@@ -90,7 +90,7 @@ public class TestDBActivity extends BaseActivity {
                 }
                 break;
             case R.id.deleteBtn:
-                list = dao.queryForAll();
+                list = dao.queryAll();
                 if(!list.isEmpty()){
                     if(dao.delete(list.get(0))==1){
                         tvResult.setText("删除成功");
