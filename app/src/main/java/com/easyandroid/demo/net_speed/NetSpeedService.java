@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
@@ -62,6 +64,10 @@ public class NetSpeedService extends Service {
 		@Override
 		public void handleMessage(Message msg) {
 			if (msg.what == 1 && msg.obj != null) {
+				if(!isNetworkAvailable(getApplicationContext())){
+					textView.setText("无网络");
+					return ;
+				}
 				String speed = msg.obj.toString();
 				if(TextUtils.isEmpty(speed)){
 					speed = "0";
@@ -189,6 +195,17 @@ public class NetSpeedService extends Service {
 		return b.divide(one, scale, BigDecimal.ROUND_HALF_UP).doubleValue();
 	}
 
+	public boolean isNetworkAvailable(Context context){
+		if (context != null) {
+			ConnectivityManager cm = (ConnectivityManager)
+					context.getSystemService(Context.CONNECTIVITY_SERVICE);
+			final NetworkInfo network = cm.getActiveNetworkInfo();
+			if(network != null && network.getState() == NetworkInfo.State.CONNECTED){
+				return true;
+			}
+		}
+		return false;
+	}
 
 
 }
