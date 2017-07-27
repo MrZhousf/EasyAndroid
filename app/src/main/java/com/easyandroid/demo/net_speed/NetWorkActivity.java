@@ -25,7 +25,6 @@ public class NetWorkActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_network);
 		Intent intent = new Intent(NetWorkActivity.this, NetSpeedService.class);
 		// startService(intent);
 		bindService(intent, conn, Context.BIND_AUTO_CREATE);

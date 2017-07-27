@@ -61,6 +61,15 @@
                 android:textAllCaps="false"
                 android:text="@string/dataBindingDemo"/>
 
+            <Button
+                android:id="@+id/btnNetWork"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextPrimary"
+                android:textAllCaps="false"
+                android:text="@string/networkDemo"/>
+
+
         </LinearLayout>
         <!-- 侧边菜单-->
         <include layout="@layout/drawer_main"/>

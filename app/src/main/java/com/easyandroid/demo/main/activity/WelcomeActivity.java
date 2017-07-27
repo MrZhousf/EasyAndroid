@@ -21,10 +21,11 @@ import com.easyandroid.core.util.LocationUtil;
 import com.easyandroid.core.util.LogUtil;
 import com.easyandroid.core.util.StringUtil;
 import com.easyandroid.core.util.ToastUtil;
-import com.easyandroid.demo.TestActivity;
 import com.easyandroid.demo.camera.activity.TestCameraActivity;
+import com.easyandroid.demo.databinding.DataBindingActivity;
 import com.easyandroid.demo.db.TestDBActivity;
 import com.easyandroid.demo.net_speed.NetWorkActivity;
+import com.easyandroid.demo.weather.activity.WeatherActivity;
 import com.jakewharton.rxbinding.view.RxView;
 import com.trello.rxlifecycle.android.ActivityEvent;
 
@@ -66,14 +67,14 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
     }
 
 
-    @OnClick({R.id.btnWeather,R.id.btnCamera,R.id.btnDB,R.id.dataBinDemo})
+    @OnClick({R.id.btnWeather,R.id.btnCamera,R.id.btnDB,R.id.dataBinDemo,R.id.btnNetWork})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ivHeadImg:
                 RxBus.get().post("test",new Info("点击了头像"));
                 break;
             case R.id.btnWeather:
-                startActivity(NetWorkActivity.class);
+                startActivity(WeatherActivity.class);
                 break;
             case R.id.btnCamera:
                 startActivity(TestCameraActivity.class);
@@ -82,8 +83,10 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
                 startActivity(TestDBActivity.class);
                 break;
             case R.id.dataBinDemo:
-//                startActivity(DataBindingActivity.class);
-                startActivity(TestActivity.class);
+                startActivity(DataBindingActivity.class);
+                break;
+            case R.id.btnNetWork:
+                startActivity(NetWorkActivity.class);
                 break;
 
         }

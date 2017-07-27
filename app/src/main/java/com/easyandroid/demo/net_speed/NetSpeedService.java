@@ -104,7 +104,7 @@ public class NetSpeedService extends Service {
 		layoutParams.gravity = Gravity.START | Gravity.TOP;
 		layoutParams.width = dpToPx(getApplicationContext(), 75);
 		layoutParams.height = LayoutParams.WRAP_CONTENT;
-		layoutParams.x = (getScreenWidth(getApplicationContext()) - layoutParams.width) / 2;
+		layoutParams.x = (getScreenWidth(getApplicationContext()) - layoutParams.width) / 10;
 		layoutParams.y = 10;
 		//初始化浮动窗口布局
 		linearLayout = new LinearLayout(getApplicationContext());
