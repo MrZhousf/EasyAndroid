@@ -49,11 +49,11 @@
         <activity
             android:name=".demo.main.activity.StartupActivity"
             android:theme="@style/startupTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".demo.main.activity.WelcomeActivity"/>
         <activity android:name=".demo.weather.activity.WeatherActivity"/>
@@ -93,6 +93,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".demo.TestActivity">
+        </activity>
+        <activity android:name=".demo.video.VideoActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 

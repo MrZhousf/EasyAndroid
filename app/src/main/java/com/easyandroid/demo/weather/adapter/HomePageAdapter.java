@@ -1,5 +1,6 @@
 package com.easyandroid.demo.weather.adapter;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -19,6 +20,9 @@ public class HomePageAdapter extends FragmentPagerAdapter {
     public void addFragment(Fragment fragment, String title) {
         if(!fragment.isAdded()){
             fragments.add(fragment);
+            Bundle bundle = new Bundle();
+            bundle.putString("title",title);
+            fragment.setArguments(bundle);
             titles.add(title);
         }
     }

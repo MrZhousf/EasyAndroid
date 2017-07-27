@@ -14,6 +14,7 @@
     <string name="weatherDemo">天气模块</string>
     <string name="cameraDemo">相机模块</string>
     <string name="dbDemo">数据库模块</string>
+    <string name="videoDemo">视频模块</string>
     <string name="dataBindingDemo">DataBinding</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
