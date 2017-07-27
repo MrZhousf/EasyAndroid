@@ -97,7 +97,7 @@
         </activity>
         <service android:name=".demo.net_speed.NetSpeedService"/>
 
-
+        <activity android:name=".demo.video.VideoActivity"/>
     </application>
 
 </manifest>
