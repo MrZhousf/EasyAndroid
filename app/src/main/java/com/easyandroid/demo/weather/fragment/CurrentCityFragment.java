@@ -114,6 +114,7 @@ public class CurrentCityFragment extends BaseRefreshFragment implements Location
             @Override
             public void onSuccess(HttpInfo info) throws IOException {
                 stopRefresh();
+                loadingDialog.dismiss();
                 try {
                     Gson gson = new Gson();
                     JSONObject jo = new JSONObject(info.getRetDetail());
@@ -144,6 +145,7 @@ public class CurrentCityFragment extends BaseRefreshFragment implements Location
             @Override
             public void onFailure(HttpInfo info) throws IOException {
                 stopRefresh();
+                loadingDialog.dismiss();
                 toast("获取("+info.getParams().get("city")+")天气失败："+info.getRetDetail());
             }
         });

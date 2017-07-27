@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -53,12 +54,21 @@ public class LoadingDialog extends Dialog {
         pb_loading = (ProgressBar) findViewById(R.id.pb_loading);
 
     }
+
+    public LoadingDialog text(String text){
+        if(tv_load != null && !TextUtils.isEmpty(text)){
+            tv_load.setText(text);
+        }
+        return this;
+    }
+
     public void succeed() {// 加载成功
         pb_loading.setVisibility(View.GONE);
         iv_load_result.setVisibility(View.VISIBLE);
         tv_load.setText("加载成功");
         mHandler.sendEmptyMessageDelayed(LOAD_SUCCEED, 1000);
     }
+
     public void failed() {// 加载失败
         pb_loading.setVisibility(View.GONE);
         iv_load_result.setVisibility(View.VISIBLE);

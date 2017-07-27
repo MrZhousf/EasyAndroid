@@ -60,23 +60,15 @@
                 android:textColor="@color/colorTextPrimary"
                 android:textAllCaps="false"
                 android:text="@string/dataBindingDemo"/>
-            <EditText
+
+            <Button
+                android:id="@+id/btnNetWork"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="1111111"
-                android:imeOptions="normal"
-                android:textColor="@color/colorPrimary"
-                android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ"
-                android:singleLine="true" />
-            <ToggleButton
-                android:id="@+id/togglebutton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                style="@style/MyToggleButton"
-                android:checked="true"
-                android:textOff=""
-                android:textOn="" />
+                android:textColor="@color/colorTextPrimary"
+                android:textAllCaps="false"
+                android:text="@string/networkDemo"/>
+
 
         </LinearLayout>
         <!-- 侧边菜单-->
