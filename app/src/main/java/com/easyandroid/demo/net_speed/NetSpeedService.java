@@ -163,6 +163,7 @@ public class NetSpeedService extends Service {
 			mTimer.cancel();
 			mTimer = null;
 		}
+		mHandler.removeCallbacksAndMessages(null);
 		super.onDestroy();
 	}
 
