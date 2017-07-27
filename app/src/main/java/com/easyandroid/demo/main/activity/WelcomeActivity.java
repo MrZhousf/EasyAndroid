@@ -1,6 +1,5 @@
 package com.easyandroid.demo.main.activity;
 
-import android.net.TrafficStats;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -25,7 +24,7 @@ import com.easyandroid.core.util.ToastUtil;
 import com.easyandroid.demo.TestActivity;
 import com.easyandroid.demo.camera.activity.TestCameraActivity;
 import com.easyandroid.demo.db.TestDBActivity;
-import com.easyandroid.demo.weather.activity.WeatherActivity;
+import com.easyandroid.demo.net_speed.NetWorkActivity;
 import com.jakewharton.rxbinding.view.RxView;
 import com.trello.rxlifecycle.android.ActivityEvent;
 
@@ -66,10 +65,6 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
 
     }
 
-    private long getRxBytes(){
-        return TrafficStats.getUidRxBytes(getApplicationInfo().uid)==TrafficStats.UNSUPPORTED ? 0 :(TrafficStats.getTotalRxBytes()/1024);//转为KB
-    }
-
 
     @OnClick({R.id.btnWeather,R.id.btnCamera,R.id.btnDB,R.id.dataBinDemo})
     public void onClick(View view) {
@@ -78,7 +73,7 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
                 RxBus.get().post("test",new Info("点击了头像"));
                 break;
             case R.id.btnWeather:
-                startActivity(WeatherActivity.class);
+                startActivity(NetWorkActivity.class);
                 break;
             case R.id.btnCamera:
                 startActivity(TestCameraActivity.class);
@@ -96,7 +91,7 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
 
 
     void testRxBus() {
-        RxBus.get().register("test",Info.class).doOnUnsubscribe(()-> LogUtil.i("WeatherActivity", "退订"))
+        RxBus.get().register("test",Info.class).doOnUnsubscribe(()-> LogUtil.i("WelcomeActivity", "退订"))
                 .compose(bindUntilEvent(ActivityEvent.PAUSE))
                 .subscribe((Info msg)->{
             ToastUtil.show(this,msg.msg);
@@ -106,9 +101,9 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
 
     void testRx(){
         Observable.interval(1, TimeUnit.SECONDS)
-                .doOnUnsubscribe(()-> LogUtil.i("WeatherActivity", "退订"))
+                .doOnUnsubscribe(()-> LogUtil.i("WelcomeActivity", "退订"))
                 .compose(bindUntilEvent(ActivityEvent.PAUSE))
-                .subscribe((Long num) -> LogUtil.i("WeatherActivity", "订阅: " + num));
+                .subscribe((Long num) -> LogUtil.i("WelcomeActivity", "订阅: " + num));
     }
 
     void initView(){

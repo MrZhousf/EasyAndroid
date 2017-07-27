@@ -19,13 +19,14 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
     <!-- 相机模块权限 -->
     <uses-permission android:name="android.permission.CAMERA"/>
-
     <uses-feature android:name="android.hardware.camera"/>
     <uses-feature android:name="android.hardware.camera.autofocus"/>
     <uses-feature android:name="android.hardware.camera.flash"/>
     <uses-feature android:name="android.hardware.camera.front"/>
     <!-- 闪光灯权限 -->
     <uses-permission android:name="android.permission.FLASHLIGHT"/>
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".core.base.BaseApplication"
@@ -51,7 +52,6 @@
             android:theme="@style/startupTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
@@ -85,15 +85,19 @@
         <activity android:name=".SchemeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
-
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
-
                 <data android:scheme="scheme"/>
             </intent-filter>
         </activity>
         <activity android:name=".demo.TestActivity">
         </activity>
+
+        <activity android:name=".demo.net_speed.NetWorkActivity">
+        </activity>
+        <service android:name=".demo.net_speed.NetSpeedService"/>
+
+
     </application>
 
 </manifest>
