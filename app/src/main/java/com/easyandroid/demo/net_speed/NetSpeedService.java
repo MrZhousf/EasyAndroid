@@ -11,8 +11,12 @@ import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.telephony.PhoneStateListener;
+import android.telephony.SignalStrength;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -38,11 +42,34 @@ public class NetSpeedService extends Service {
 	private TextView textView;
 	private TrafficUtil trafficUtil;
 	private Timer mTimer = null;
+	private TelephonyManager telephonyManager;
+	private int gsmSignalStrength;
 
 	@Override
 	public void onCreate() {
 		super.onCreate();
 		initView();
+		initLoop();
+		telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+		telephonyManager.listen(phoneStateListener, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
+	}
+
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) {
+		return START_STICKY_COMPATIBILITY;
+	}
+
+	@Override
+	public IBinder onBind(Intent intent) {
+		return new ServiceBinder();
+	}
+
+	@Override
+	public void onTrimMemory(int level) {
+
+	}
+
+	private void initLoop(){
 		trafficUtil = new TrafficUtil();
 		if (mTimer != null) {
 			mTimer.cancel();
@@ -86,20 +113,19 @@ public class NetSpeedService extends Service {
 
 	};
 
-	@Override
-	public int onStartCommand(Intent intent, int flags, int startId) {
-		return START_STICKY_COMPATIBILITY;
-	}
-
-	@Override
-	public IBinder onBind(Intent intent) {
-		return new ServiceBinder();
-	}
-
-	@Override
-	public void onTrimMemory(int level) {
-
-	}
+	private PhoneStateListener phoneStateListener = new PhoneStateListener(){
+		@Override
+		public void onSignalStrengthsChanged(SignalStrength signalStrength) {
+			super.onSignalStrengthsChanged(signalStrength);
+			gsmSignalStrength = signalStrength.getGsmSignalStrength();
+			int cdmaDbm = signalStrength.getCdmaDbm();
+			int cdmaEcio = signalStrength.getCdmaEcio();
+			int evdoDbm = signalStrength.getEvdoDbm();
+			int evdoEcio = signalStrength.getEvdoEcio();
+			String detail = "cdmaDbm="+cdmaDbm+",cdmaEcio="+cdmaEcio+",evdoDbm="+evdoDbm+",evdoEcio"+evdoEcio;
+			Log.e("NetSpeedService","信号:"+detail );
+		}
+	};
 
 	private void initView() {
 		LayoutParams layoutParams = new LayoutParams();
@@ -164,6 +190,7 @@ public class NetSpeedService extends Service {
 			mTimer = null;
 		}
 		mHandler.removeCallbacksAndMessages(null);
+		telephonyManager.listen(phoneStateListener, PhoneStateListener.LISTEN_NONE);
 		super.onDestroy();
 	}
 

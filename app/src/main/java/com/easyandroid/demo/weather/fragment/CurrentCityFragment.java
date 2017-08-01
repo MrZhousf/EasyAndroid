@@ -29,8 +29,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import rx.android.schedulers.AndroidSchedulers;
@@ -124,14 +122,7 @@ public class CurrentCityFragment extends BaseRefreshFragment implements Location
                         String status = weather.status;
                         if("ok".equals(status)){
                             adapter.clear();
-                            List<Weather> list = new ArrayList<Weather>();
-                            List<Weather.DailyForecastEntity> l = weather.dailyForecast;
-                            l.addAll(l);
-                            for (int i = 0; i < 10; i++) {
-                                list.add(weather);
-                            }
-                            adapter.addAll(list);
-//                            adapter.addItem(weather);
+                            adapter.addItem(weather);
                         }else{
                             toast("获取("+info.getParams().get("city")+")天气失败："+status);
                         }

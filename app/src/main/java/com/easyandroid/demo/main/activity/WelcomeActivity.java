@@ -116,7 +116,7 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
         //定位按钮防抖设计：2秒中只响应一次
         RxView.clicks(fbLocation)
                 .throttleFirst(2,TimeUnit.SECONDS)
-                .compose(this.<Void>bindUntilEvent(ActivityEvent.STOP))
+                .compose(this.<Void>bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe((Void aVoid)->location());
     }
 
