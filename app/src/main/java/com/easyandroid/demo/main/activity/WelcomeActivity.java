@@ -122,7 +122,7 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
         //定位按钮防抖设计：2秒中只响应一次
         RxView.clicks(fbLocation)
                 .throttleFirst(2,TimeUnit.SECONDS)
-                .compose(this.<Void>bindUntilEvent(ActivityEvent.STOP))
+                .compose(this.<Void>bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe((Void aVoid)->location());
     }
 
@@ -200,8 +200,8 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
     @Override
     public void onLocationChanged(boolean isSuccess, AMapLocation aMapLocation) {
         if (isSuccess) {
-            tvLocation.setText(StringUtil.safeText(getString(R.string.currentLocation),aMapLocation.getCity()));
-            Snackbar.make(findViewById(R.id.activity_welcome), "定位成功："+aMapLocation.getCity(), Snackbar.LENGTH_LONG).show();
+            tvLocation.setText(StringUtil.safeText(getString(R.string.currentLocation),aMapLocation.getAddress()));
+            Snackbar.make(findViewById(R.id.activity_welcome), "定位成功："+aMapLocation.getAddress(), Snackbar.LENGTH_LONG).show();
         } else {
             tvLocation.setText(StringUtil.safeText(getString(R.string.currentLocation),"定位失败"));
             Snackbar.make(findViewById(R.id.activity_welcome), "定位失败", Snackbar.LENGTH_LONG)
