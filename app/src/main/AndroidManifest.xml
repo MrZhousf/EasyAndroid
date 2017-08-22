@@ -19,14 +19,14 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
     <!-- 相机模块权限 -->
     <uses-permission android:name="android.permission.CAMERA"/>
+
     <uses-feature android:name="android.hardware.camera"/>
     <uses-feature android:name="android.hardware.camera.autofocus"/>
     <uses-feature android:name="android.hardware.camera.flash"/>
     <uses-feature android:name="android.hardware.camera.front"/>
     <!-- 闪光灯权限 -->
     <uses-permission android:name="android.permission.FLASHLIGHT"/>
-
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <application
         android:name=".core.base.BaseApplication"
@@ -45,15 +45,16 @@
             android:name=".core.base.BaseProvider"
             android:authorities=".core.base.BaseProvider"
             android:exported="false"
-            android:multiprocess="true" />
+            android:multiprocess="true"/>
 
         <activity
             android:name=".demo.main.activity.StartupActivity"
             android:theme="@style/startupTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".demo.main.activity.WelcomeActivity"/>
         <activity android:name=".demo.weather.activity.WeatherActivity"/>
@@ -92,12 +93,20 @@
         </activity>
         <activity android:name=".demo.TestActivity">
         </activity>
-
         <activity android:name=".demo.net_speed.NetWorkActivity">
         </activity>
+
         <service android:name=".demo.net_speed.NetSpeedService"/>
 
         <activity android:name=".demo.video.VideoActivity"/>
+        <activity android:name=".demo.online.MainActivity"
+        >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
