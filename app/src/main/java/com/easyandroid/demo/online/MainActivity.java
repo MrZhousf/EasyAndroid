@@ -86,7 +86,8 @@ public class MainActivity extends BaseActivity implements LocationUtil.LocationL
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        webView.loadUrl("file:///android_asset/1.swf");
+//        webView.loadUrl("file:///android_asset/1.swf");
+        webView.loadUrl("http://www.usacamp.cn/popup/bc_demo/demo.php");
         boolean is = checkFlashPlugin();
         if(is){
         }
