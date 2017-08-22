@@ -24,17 +24,11 @@ import com.easyandroid.core.util.ToastUtil;
 import com.easyandroid.demo.camera.activity.TestCameraActivity;
 import com.easyandroid.demo.databinding.DataBindingActivity;
 import com.easyandroid.demo.db.TestDBActivity;
-import com.easyandroid.demo.main.Model;
 import com.easyandroid.demo.net_speed.NetWorkActivity;
 import com.easyandroid.demo.weather.activity.WeatherActivity;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.jakewharton.rxbinding.view.RxView;
 import com.trello.rxlifecycle.android.ActivityEvent;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.Bind;
