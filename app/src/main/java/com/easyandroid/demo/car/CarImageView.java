@@ -30,11 +30,9 @@ public class CarImageView extends AppCompatImageView{
          * 显示提示框回调
          * @param centerX 触摸控件的中心点X
          * @param centerY 触摸控件的中心点Y
-         * @param rawX 相对父类触摸坐标点X
-         * @param rawY 相对父类触摸坐标点Y
          * @param carImageView 控件
          */
-        void onShowTip(float centerX,float centerY,float rawX,float rawY,CarImageView carImageView);
+        void onShowTip(float centerX,float centerY,CarImageView carImageView);
     }
 
     private CarIVTouch carIVTouch;
@@ -85,7 +83,7 @@ public class CarImageView extends AppCompatImageView{
                 if(carIVTouch != null){
                     float centerX = event.getRawX() - event.getX() + getWidth()/2;
                     float centerY = event.getRawY() - event.getY() + getHeight()/2 - statusBarHeight;
-                    carIVTouch.onShowTip(centerX,centerY,event.getRawX(),event.getRawY(),this);
+                    carIVTouch.onShowTip(centerX,centerY,this);
                 }
                 break;
             case MotionEvent.ACTION_UP:

@@ -94,7 +94,7 @@ public class CarRelativeLayout extends RelativeLayout implements CarImageView.Ca
     }
 
     @Override
-    public void onShowTip(float centerX, float centerY, float rawX,float rawY, CarImageView carImageView) {
+    public void onShowTip(float centerX, float centerY, CarImageView carImageView) {
         if(tip_item_ll != null){
             tip_item_ll.setVisibility(INVISIBLE);
         }
