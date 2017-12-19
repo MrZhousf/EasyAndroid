@@ -21,25 +21,25 @@ public class CarActivity extends AppCompatActivity {
         img3_iv = (CarImageView) findViewById(R.id.img3_iv);
         img4_iv = (CarImageView) findViewById(R.id.img4_iv);
         img5_iv = (CarImageView) findViewById(R.id.img5_iv);
-        img_iv.addCarInfo("喷漆","¥550.0",getResources().getColor(R.color.color_31c27c))
-                .addCarInfo("钣金","¥120.0",getResources().getColor(R.color.color_ffb90f))
-                .addCarInfo("拆钣喷","¥390.0",getResources().getColor(R.color.color_e81d62))
-                .addCarInfo("更换","¥1020.0",getResources().getColor(R.color.color_9B30FF));
-        img2_iv.addCarInfo("喷漆","¥10.0",getResources().getColor(R.color.color_31c27c))
-                .addCarInfo("钣金","¥20.0",getResources().getColor(R.color.color_ffb90f))
-                .addCarInfo("拆钣喷","¥30.0",getResources().getColor(R.color.color_e81d62))
-                .addCarInfo("拆钣喷","¥30.0",getResources().getColor(R.color.color_e81d62))
-                .addCarInfo("更换","¥40.0",getResources().getColor(R.color.color_9B30FF));
-        img4_iv.addCarInfo("喷漆","¥100.0",getResources().getColor(R.color.color_31c27c))
-                .addCarInfo("更换","¥400.0",getResources().getColor(R.color.color_9B30FF));
-        img3_iv.addCarInfo("喷漆","¥101.0",getResources().getColor(R.color.color_31c27c))
-                .addCarInfo("钣金","¥201.0",getResources().getColor(R.color.color_ffb90f))
-                .addCarInfo("拆钣喷","¥301.0",getResources().getColor(R.color.color_e81d62))
-                .addCarInfo("更换","¥401.0",getResources().getColor(R.color.color_9B30FF));
-        img5_iv.addCarInfo("喷漆","¥3301.0",getResources().getColor(R.color.color_31c27c))
-                .addCarInfo("钣金","¥3321.0",getResources().getColor(R.color.color_ffb90f))
-                .addCarInfo("拆钣喷","¥3201.0",getResources().getColor(R.color.color_e81d62))
-                .addCarInfo("更换","¥4031.0",getResources().getColor(R.color.color_9B30FF));
+        img_iv.addCarInfo("头1","¥550.0",getResources().getColor(R.color.color_31c27c))
+                .addCarInfo("头2","¥120.0",getResources().getColor(R.color.color_ffb90f))
+                .addCarInfo("头3","¥390.0",getResources().getColor(R.color.color_e81d62))
+                .addCarInfo("头4","¥1020.0",getResources().getColor(R.color.color_9B30FF));
+        img2_iv.addCarInfo("脖子1","¥10.0",getResources().getColor(R.color.color_31c27c))
+                .addCarInfo("脖子2","¥20.0",getResources().getColor(R.color.color_ffb90f))
+                .addCarInfo("脖子3","¥30.0",getResources().getColor(R.color.color_e81d62))
+                .addCarInfo("脖子4","¥30.0",getResources().getColor(R.color.color_e81d62))
+                .addCarInfo("脖子5","¥40.0",getResources().getColor(R.color.color_9B30FF));
+        img3_iv.addCarInfo("胸膛1","¥101.0",getResources().getColor(R.color.color_31c27c))
+                .addCarInfo("胸膛2","¥201.0",getResources().getColor(R.color.color_ffb90f))
+                .addCarInfo("胸膛3","¥301.0",getResources().getColor(R.color.color_e81d62))
+                .addCarInfo("胸膛4","¥401.0",getResources().getColor(R.color.color_9B30FF));
+        img4_iv.addCarInfo("太阳1","¥100.0",getResources().getColor(R.color.color_31c27c))
+                .addCarInfo("太阳2","¥400.0",getResources().getColor(R.color.color_9B30FF));
+        img5_iv.addCarInfo("太阳1","¥3301.0",getResources().getColor(R.color.color_31c27c))
+                .addCarInfo("太阳2","¥3321.0",getResources().getColor(R.color.color_ffb90f))
+                .addCarInfo("太阳3","¥3201.0",getResources().getColor(R.color.color_e81d62))
+                .addCarInfo("太阳4","¥4031.0",getResources().getColor(R.color.color_9B30FF));
     }
 
 
