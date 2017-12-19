@@ -13,7 +13,6 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
@@ -150,8 +149,6 @@ public class MainActivity extends BaseActivity implements LocationUtil.LocationL
         if(null == navigationView)
             return;
         navigationView.setItemIconTintList(null);
-        ImageView ivHeadImg = (ImageView) findViewById(R.id.ivHeadImg);
-        ivHeadImg.setOnClickListener(this);
         navigationView.setNavigationItemSelectedListener((MenuItem menuItem)-> {
             //关闭侧边菜单
             if(null != drawerLayout)

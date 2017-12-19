@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">amap</string>
+    <!-- 高德-->
+    <string name="map_notifyTitle">提示</string>
+    <string name="map_notifyMsg">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。</string>
+    <string name="map_setting">设置</string>
+    <string name="map_cancel">取消</string>
+    <string name="map_navigation">开始导航</string>
+    <string name="map_search">搜索</string>
+    <string name="map_search_result">搜索结果</string>
+    <string name="map_please_input_key">请输入关键字</string>
+</resources>

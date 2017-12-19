@@ -21,7 +21,7 @@ public class CameraActivity extends Activity implements CameraHelper.CaptureCall
 	private ImageView btnTakePicture;
 	private View focusView;
 	//是否显示红色裁剪框
-	private boolean showRedBorderLine = true;
+	private boolean showRedBorderLine = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

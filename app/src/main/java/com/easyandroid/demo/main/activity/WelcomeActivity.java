@@ -10,7 +10,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
@@ -21,12 +20,15 @@ import com.easyandroid.core.util.LocationUtil;
 import com.easyandroid.core.util.LogUtil;
 import com.easyandroid.core.util.StringUtil;
 import com.easyandroid.core.util.ToastUtil;
+import com.easyandroid.core.view.CircleImageView;
 import com.easyandroid.demo.camera.activity.TestCameraActivity;
+import com.easyandroid.demo.car.CarActivity;
 import com.easyandroid.demo.databinding.DataBindingActivity;
 import com.easyandroid.demo.db.TestDBActivity;
 import com.easyandroid.demo.net_speed.NetWorkActivity;
 import com.easyandroid.demo.weather.activity.WeatherActivity;
 import com.jakewharton.rxbinding.view.RxView;
+import com.jy.amap.AMapAPI;
 import com.trello.rxlifecycle.android.ActivityEvent;
 
 import java.util.concurrent.TimeUnit;
@@ -67,10 +69,11 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
     }
 
 
-    @OnClick({R.id.btnWeather,R.id.btnCamera,R.id.btnDB,R.id.dataBinDemo,R.id.btnNetWork})
+    @OnClick({R.id.btnWeather,R.id.btnCamera,R.id.btnDB,R.id.dataBinDemo,R.id.btnNetWork,
+            R.id.btnAmap,R.id.btnCustomer})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.ivHeadImg:
+            case R.id.ivHeadImg_drawer:
                 RxBus.get().post("test",new Info("点击了头像"));
                 break;
             case R.id.btnWeather:
@@ -87,6 +90,14 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
                 break;
             case R.id.btnNetWork:
                 startActivity(NetWorkActivity.class);
+                break;
+            case R.id.btnAmap:
+                Bundle bundle = new Bundle();
+                bundle.putString("searchKey","清华大学");
+                AMapAPI.toPOISearchActivity(this,bundle);
+                break;
+            case R.id.btnCustomer:
+                startActivity(CarActivity.class);
                 break;
 
         }
@@ -156,8 +167,10 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
         if(null == navigationView)
             return;
         navigationView.setItemIconTintList(null);
-        ImageView ivHeadImg = (ImageView) findViewById(R.id.ivHeadImg);
-        ivHeadImg.setOnClickListener(this);
+        CircleImageView ivHeadImg = (CircleImageView) findViewById(R.id.ivHeadImg_drawer);
+        if(ivHeadImg != null){
+            ivHeadImg.setOnClickListener(this);
+        }
         navigationView.setNavigationItemSelectedListener((MenuItem menuItem)-> {
                 //关闭侧边菜单
                 if(null != drawerLayout)

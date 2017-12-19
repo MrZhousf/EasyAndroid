@@ -69,6 +69,21 @@
                 android:textAllCaps="false"
                 android:text="@string/networkDemo"/>
 
+            <Button
+                android:id="@+id/btnAmap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextPrimary"
+                android:textAllCaps="false"
+                android:text="@string/amapDemo"/>
+            <Button
+                android:id="@+id/btnCustomer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextPrimary"
+                android:textAllCaps="false"
+                android:text="@string/customerDemo"/>
+
 
         </LinearLayout>
         <!-- 侧边菜单-->

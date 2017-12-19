@@ -1,6 +1,6 @@
 package com.easyandroid.core.base;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import com.easyandroid.demo.main.util.CrashApphandler;
 
@@ -8,7 +8,7 @@ import com.easyandroid.demo.main.util.CrashApphandler;
  * @author : zhousf
  */
 
-public class BaseApplication extends Application {
+public class BaseApplication extends MultiDexApplication {
 
     static BaseApplication baseApplication;
 

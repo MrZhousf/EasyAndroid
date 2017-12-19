@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <com.easyandroid.demo.car.CarRelativeLayout
+        android:id="@+id/car_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+    >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/left_ll">
+            <com.easyandroid.demo.car.CarImageView
+                android:id="@+id/img4_iv"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/type_two_sunny"
+            />
+
+        </RelativeLayout>
+
+        <com.easyandroid.demo.car.CarImageView
+            android:id="@+id/img5_iv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/type_two_sunny"
+        />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/left_ll"
+            android:id="@+id/center_ll">
+        <com.easyandroid.demo.car.CarImageView
+            android:id="@+id/img_iv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/medical_male_front_head"
+        />
+
+        <com.easyandroid.demo.car.CarImageView
+            android:id="@+id/img2_iv"
+            android:layout_below="@+id/img_iv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/medical_male_front_neck"
+        />
+
+        <com.easyandroid.demo.car.CarImageView
+            android:id="@+id/img3_iv"
+            android:layout_below="@+id/img2_iv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/medical_male_front_chest"
+        />
+
+        </RelativeLayout>
+
+    </com.easyandroid.demo.car.CarRelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id="@+id/btn_green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="绿色"
+            android:textColor="@color/white"
+            android:background="@color/color_31c27c"
+            android:onClick="changeColorBtn"
+        />
+
+        <Button
+            android:id="@+id/btn_red"
+            android:layout_toEndOf="@+id/btn_green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="红色"
+            android:textColor="@color/white"
+            android:background="@color/color_e81d62"
+            android:onClick="changeColorBtn"
+        />
+
+        <Button
+            android:id="@+id/btn_purple"
+            android:layout_toEndOf="@+id/btn_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="紫色"
+            android:textColor="@color/white"
+            android:background="@color/color_9B30FF"
+            android:onClick="changeColorBtn"
+        />
+
+
+        <Button
+            android:id="@+id/btn_gold"
+            android:layout_toEndOf="@+id/btn_purple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="金色"
+            android:textColor="@color/white"
+            android:background="@color/color_ffb90f"
+            android:onClick="changeColorBtn"
+        />
+
+    </RelativeLayout>
+
+</RelativeLayout>

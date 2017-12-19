@@ -11,12 +11,23 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        multiDexEnabled false
+        multiDexEnabled true
 //        resourcePrefix "new_easy"//资源名前缀：避免资源冲突
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a"
+        }
     }
     dataBinding {
         enabled = true
     }
+//    splits {
+//        abi {
+//            enable true
+//            reset()
+//            include 'x86', 'armeabi-v7a'
+//            universalApk true
+//        }
+//    }
     dexOptions {
         javaMaxHeapSize "4g"
         preDexLibraries = false
@@ -63,7 +74,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -74,7 +85,7 @@ dependencies {
     compile rootProject.ext.dependencies.percent
     compile rootProject.ext.dependencies.butterknife
     compile rootProject.ext.dependencies.glide
-    compile rootProject.ext.dependencies.gson
+    //    compile rootProject.ext.dependencies.gson
     compile rootProject.ext.dependencies.eventbus
     compile(rootProject.ext.dependencies.okhttp) {
         exclude(module: 'appcompat-v7')
@@ -85,15 +96,13 @@ dependencies {
         exclude(module: 'jsr305')
     }
     compile rootProject.ext.dependencies.rxcache
-//    compile rootProject.ext.dependencies.retrofit
+    //    compile rootProject.ext.dependencies.retrofit
     //    compile "com.squareup.okhttp3:logging-interceptor:3.3.1"
-
-
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     compile 'tv.danmaku.ijk.media:ijkplayer-java:0.6.0'
     compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.6.0'
-
+    compile project(':amap')
 }
 

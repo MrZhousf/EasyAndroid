@@ -17,6 +17,8 @@
     <string name="videoDemo">视频模块</string>
     <string name="dataBindingDemo">DataBinding</string>
     <string name="networkDemo">网络状态模块</string>
+    <string name="amapDemo">高德地图模块</string>
+    <string name="customerDemo">自定义View模块</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
