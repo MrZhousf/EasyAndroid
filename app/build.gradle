@@ -20,14 +20,6 @@ android {
     dataBinding {
         enabled = true
     }
-//    splits {
-//        abi {
-//            enable true
-//            reset()
-//            include 'x86', 'armeabi-v7a'
-//            universalApk true
-//        }
-//    }
     dexOptions {
         javaMaxHeapSize "4g"
         preDexLibraries = false
@@ -71,7 +63,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildToolsVersion '26'
 }
 
 dependencies {
@@ -97,6 +88,7 @@ dependencies {
         exclude(module: 'jsr305')
     }
     compile rootProject.ext.dependencies.rxcache
+    compile rootProject.ext.dependencies.multidex
     //    compile rootProject.ext.dependencies.retrofit
     //    compile "com.squareup.okhttp3:logging-interceptor:3.3.1"
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
