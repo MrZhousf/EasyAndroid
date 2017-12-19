@@ -45,6 +45,9 @@ public class CarActivity extends AppCompatActivity {
 
     public void changeColorBtn(View view){
         switch (view.getId()){
+            case R.id.btn_recovery:
+                img_iv.recoveryColor();
+                break;
             case R.id.btn_green:
                 img_iv.setColor(getResources().getColor(R.color.color_31c27c));
                 break;

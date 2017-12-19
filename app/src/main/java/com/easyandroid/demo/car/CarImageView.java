@@ -35,6 +35,7 @@ public class CarImageView extends AppCompatImageView{
         void onShowTip(float centerX,float centerY,CarImageView carImageView);
     }
 
+    private Drawable originalDrawable;
     private CarIVTouch carIVTouch;
     private Paint paint;
     private int textSize = sp2px(14);
@@ -64,8 +65,8 @@ public class CarImageView extends AppCompatImageView{
         paint.setAntiAlias(true);
         paint.setTextSize(textSize);
         statusBarHeight = getStatusBarHeight();
+        originalDrawable = getDrawable();
     }
-
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -110,6 +111,14 @@ public class CarImageView extends AppCompatImageView{
             DrawableCompat.setTintList(wrappedDrawable, ColorStateList.valueOf(color));
             setImageDrawable(wrappedDrawable);
         }
+    }
+
+    //还原控件填充色
+    public void recoveryColor(){
+        final Drawable wrappedDrawable = DrawableCompat.wrap(originalDrawable);
+        //colorStateList为空时则还原填充色
+        DrawableCompat.setTintList(wrappedDrawable, null);
+        setImageDrawable(wrappedDrawable);
     }
 
     //设置提示文本的字体大小
