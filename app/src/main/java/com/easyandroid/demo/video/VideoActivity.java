@@ -22,18 +22,16 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
  * 视频模块
  */
 public class VideoActivity extends BaseActivity implements View.OnClickListener,SurfaceHolder.Callback, IMediaPlayer.OnPreparedListener,
-        IMediaPlayer.OnCompletionListener,IMediaPlayer.OnSeekCompleteListener, IMediaPlayer.OnBufferingUpdateListener,SeekBar.OnSeekBarChangeListener {
+        IMediaPlayer.OnCompletionListener, IMediaPlayer.OnBufferingUpdateListener,SeekBar.OnSeekBarChangeListener {
 
     private static final String TAG = "VideoActivity";
 
     private IjkMediaPlayer mediaPlayer;
     private SurfaceView surfaceView;
-    private SurfaceHolder surfaceHolder;
-    /** 播放 */
-    private Button playBtn;
-    /** 暂停 */
-    private Button pauseBtn;
     private SeekBar seekBar;
+    private boolean isSeeking;
+    private int currentPosition;
+    private boolean isPrepared;
 
     String[] urls = new String[]{
             "http://ips.ifeng.com/video.ifeng.com/video04/2011/03/24/480x360_offline20110324.mp4",
@@ -55,15 +53,12 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        playBtn = (Button) findViewById(R.id.playBtn);
-        pauseBtn = (Button) findViewById(R.id.pauseBtn);
+        Button playBtn = (Button) findViewById(R.id.playBtn);
+        Button pauseBtn = (Button) findViewById(R.id.pauseBtn);
         seekBar = (SeekBar) findViewById(R.id.seekBar);
         playBtn.setOnClickListener(this);
         pauseBtn.setOnClickListener(this);
         seekBar.setOnSeekBarChangeListener(this);
-        surfaceView= (SurfaceView) findViewById(R.id.surfaceView);
-        surfaceHolder=surfaceView.getHolder();
-        surfaceHolder.addCallback(this);
         mediaPlayer = new IjkMediaPlayer();
         try {
             mediaPlayer.setDataSource(urls[0]);
@@ -76,8 +71,13 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener,
         mediaPlayer.setOnCompletionListener(this);
         //当前加载进度的监听
         mediaPlayer.setOnBufferingUpdateListener(this);
-        //seek监听
-        mediaPlayer.setOnSeekCompleteListener(this);
+        surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
+        surfaceView.getHolder().addCallback(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -87,75 +87,59 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener,
                 mediaPlayer.pause();
                 break;
             case R.id.playBtn:
-                if(mediaPlayer.isPlayable()){
-                    if(!mediaPlayer.isPlaying()){
-                        mediaPlayer.start();
-                    }
-                }else{
-                    ToastUtil.show(this,"正在加载...");
+                if(!isPrepared){
+                    ToastUtil.show(this,"正在初始化播放器，请稍后再试。");
+                    return ;
+                }
+                if(!mediaPlayer.isPlaying()){
+                    mediaPlayer.start();
                 }
                 break;
         }
     }
-    private int currentPosition;
-    private int seekPosition;
+
     private Handler handler = new Handler();
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            if(mediaPlayer.isPlaying()){
-                if(isSeeking){
-                    seekBar.setProgress(seekPosition);
-                    LogUtil.d(TAG,"setProgress1 "+seekPosition);
-                }else{
-                    long p = mediaPlayer.getCurrentPosition();
-                    if(p > 0 && p != currentPosition){
-                        currentPosition = (int)p;
-                        seekBar.setProgress(currentPosition);
-                        LogUtil.d(TAG,"setProgress "+currentPosition);
-                    }
-                }
-            }
             handler.postDelayed(this,50);
+            if(isSeeking)
+                return ;
+            long p = mediaPlayer.getCurrentPosition();
+            if(p > 0 && p != currentPosition){
+                currentPosition = (int)p;
+                seekBar.setProgress(currentPosition);
+                LogUtil.d(TAG,"setProgress "+currentPosition);
+            }
+
         }
     };
-    private boolean isSeeking;
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        if(!fromUser) {
-            return ;
-        }
-        if(progress > 0 ){
-            isSeeking = true;
-            mediaPlayer.pause();
-            mediaPlayer.seekTo(progress);
-            LogUtil.d(TAG,"seekTo "+progress);
-        }
-    }
 
     @Override
-    public void onSeekComplete(IMediaPlayer iMediaPlayer) {
-        LogUtil.d(TAG,"onSeekComplete");
-        mediaPlayer.start();
-        seekPosition = (int) iMediaPlayer.getCurrentPosition();
-        isSeeking = false;
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
     }
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-
+        isSeeking = true;
+        LogUtil.d(TAG,"onStartTrackingTouch "+seekBar.getProgress());
+        if(mediaPlayer.isPlaying()){
+            mediaPlayer.pause();
+        }
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-
+        isSeeking = false;
+        LogUtil.d(TAG,"onStopTrackingTouch "+seekBar.getProgress());
+        mediaPlayer.seekTo(seekBar.getProgress());
+        mediaPlayer.start();
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        //连接ijkPlayer 和surfaceHOLDER
-        mediaPlayer.setDisplay(holder);
         LogUtil.d(TAG,"surfaceCreated");
+        mediaPlayer.setDisplay(holder);
         //开启异步准备
         mediaPlayer.prepareAsync();
     }
@@ -186,21 +170,31 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void onPrepared(IMediaPlayer iMediaPlayer) {
         LogUtil.d(TAG,"onPrepared");
+        isPrepared = true;
         seekBar.setMax((int)iMediaPlayer.getDuration());
         handler.post(runnable);
         if(mediaPlayer.isPlaying()){
             mediaPlayer.pause();
         }
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mediaPlayer.pause();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        mediaPlayer.stop();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mediaPlayer.release();
     }
 
 }
