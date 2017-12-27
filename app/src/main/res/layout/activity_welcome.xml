@@ -83,6 +83,13 @@
                 android:textColor="@color/colorTextPrimary"
                 android:textAllCaps="false"
                 android:text="@string/customerDemo"/>
+            <Button
+                android:id="@+id/btnVideo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextPrimary"
+                android:textAllCaps="false"
+                android:text="@string/videoDemo"/>
 
 
         </LinearLayout>

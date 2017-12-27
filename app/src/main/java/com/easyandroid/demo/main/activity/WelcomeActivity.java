@@ -26,6 +26,7 @@ import com.easyandroid.demo.car.CarActivity;
 import com.easyandroid.demo.databinding.DataBindingActivity;
 import com.easyandroid.demo.db.TestDBActivity;
 import com.easyandroid.demo.net_speed.NetWorkActivity;
+import com.easyandroid.demo.video.VideoActivity;
 import com.easyandroid.demo.weather.activity.WeatherActivity;
 import com.jakewharton.rxbinding.view.RxView;
 import com.jy.amap.AMapAPI;
@@ -70,7 +71,7 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
 
 
     @OnClick({R.id.btnWeather,R.id.btnCamera,R.id.btnDB,R.id.dataBinDemo,R.id.btnNetWork,
-            R.id.btnAmap,R.id.btnCustomer})
+            R.id.btnAmap,R.id.btnCustomer,R.id.btnVideo})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ivHeadImg_drawer:
@@ -98,6 +99,9 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
                 break;
             case R.id.btnCustomer:
                 startActivity(CarActivity.class);
+                break;
+            case R.id.btnVideo:
+                startActivity(VideoActivity.class);
                 break;
 
         }
