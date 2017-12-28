@@ -14,9 +14,9 @@
     <item android:title="更多">
         <menu>
             <item
-                android:id="@+id/navigation_file"
+                android:id="@+id/navigation_theme"
                 android:icon="@mipmap/folder"
-                android:title="@string/file_manager" />
+                android:title="@string/theme_manager" />
         </menu>
     </item>
 

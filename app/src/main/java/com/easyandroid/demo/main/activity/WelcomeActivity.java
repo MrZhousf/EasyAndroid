@@ -19,6 +19,7 @@ import com.easyandroid.core.base.RxBus;
 import com.easyandroid.core.util.LocationUtil;
 import com.easyandroid.core.util.LogUtil;
 import com.easyandroid.core.util.StringUtil;
+import com.easyandroid.core.util.ThemeManager;
 import com.easyandroid.core.util.ToastUtil;
 import com.easyandroid.core.view.CircleImageView;
 import com.easyandroid.demo.camera.activity.TestCameraActivity;
@@ -186,8 +187,8 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
                     case R.id.navigation_author:
                         ToastUtil.show(WelcomeActivity.this,getString(R.string.about_author));
                         break;
-                    case R.id.navigation_file:
-                        ToastUtil.show(WelcomeActivity.this,getString(R.string.file_manager));
+                    case R.id.navigation_theme:
+                        ThemeManager.get().setCurrentTheme(this,"theme.manager.theme.night");
                         break;
                 }
                 return true;

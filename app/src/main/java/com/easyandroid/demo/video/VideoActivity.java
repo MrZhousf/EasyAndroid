@@ -3,7 +3,6 @@ package com.easyandroid.demo.video;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -27,7 +26,7 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener,
     private static final String TAG = "VideoActivity";
 
     private IjkMediaPlayer mediaPlayer;
-    private SurfaceView surfaceView;
+    private VideoSurfaceView surfaceView;
     private SeekBar seekBar;
     private boolean isSeeking;
     private int currentPosition;
@@ -71,7 +70,7 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener,
         mediaPlayer.setOnCompletionListener(this);
         //当前加载进度的监听
         mediaPlayer.setOnBufferingUpdateListener(this);
-        surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
+        surfaceView = (VideoSurfaceView) findViewById(R.id.surfaceView);
         surfaceView.getHolder().addCallback(this);
     }
 
@@ -109,7 +108,6 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener,
             if(p > 0 && p != currentPosition){
                 currentPosition = (int)p;
                 seekBar.setProgress(currentPosition);
-                LogUtil.d(TAG,"setProgress "+currentPosition);
             }
 
         }

@@ -10,7 +10,7 @@
     <!-- 标题栏-->
     <include layout="@layout/toolbar_main" />
 
-    <SurfaceView
+    <com.easyandroid.demo.video.VideoSurfaceView
         android:id="@+id/surfaceView"
         android:layout_width="match_parent"
         android:layout_height="400dp"

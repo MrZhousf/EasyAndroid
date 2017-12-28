@@ -104,5 +104,5 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@mipmap/ic_location"
-        app:backgroundTint="@color/colorPrimary"/>
+        app:backgroundTint="?attr/colorPrimary"/>
 </android.support.design.widget.CoordinatorLayout>

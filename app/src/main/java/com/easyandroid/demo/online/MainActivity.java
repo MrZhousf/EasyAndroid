@@ -160,9 +160,6 @@ public class MainActivity extends BaseActivity implements LocationUtil.LocationL
                 case R.id.navigation_author:
                     ToastUtil.show(MainActivity.this,getString(R.string.about_author));
                     break;
-                case R.id.navigation_file:
-                    ToastUtil.show(MainActivity.this,getString(R.string.file_manager));
-                    break;
             }
             return true;
         });

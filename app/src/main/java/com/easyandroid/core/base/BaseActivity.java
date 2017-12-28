@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.easyandroid.R;
+import com.easyandroid.core.util.ThemeManager;
 import com.easyandroid.core.util.ToastUtil;
 
 import butterknife.ButterKnife;
@@ -47,6 +48,8 @@ public abstract class BaseActivity extends RxAppCompatActivity implements View.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final int layoutId = initLayout();
+        //设置主题
+        setTheme(ThemeManager.get().getCurrentTheme());
         if(layoutId != 0)
             setContentView(initLayout());
         initTitle(titleBar = new TitleBar());
