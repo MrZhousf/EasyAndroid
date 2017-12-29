@@ -38,11 +38,11 @@
         android:theme="@style/ThemeDefault"
         tools:replace="android:icon,android:theme">
 
-         <!--<meta-data-->
-         <!--android:name="com.amap.api.v2.apikey"-->
-         <!--android:value="391869cc2c6d8017c56bf66c7db094a8"/>-->
-         <!--&lt;!&ndash; 高德定位 &ndash;&gt;-->
-         <!--<service android:name="com.amap.api.location.APSService"/>-->
+        <!-- <meta-data -->
+        <!-- android:name="com.amap.api.v2.apikey" -->
+        <!-- android:value="391869cc2c6d8017c56bf66c7db094a8"/> -->
+        <!-- &lt;!&ndash; 高德定位 &ndash;&gt; -->
+        <!-- <service android:name="com.amap.api.location.APSService"/> -->
 
         <provider
             android:name=".core.base.BaseProvider"
@@ -53,13 +53,16 @@
         <activity
             android:name=".demo.main.activity.StartupActivity"
             android:theme="@style/startupTheme">
+        </activity>
+        <activity
+            android:name=".demo.main.activity.WelcomeActivity"
+            android:theme="@style/startupTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".demo.main.activity.WelcomeActivity"/>
         <activity android:name=".demo.weather.activity.WeatherActivity"/>
 
         <!-- 全局搜索 -->
@@ -109,6 +112,8 @@
         <activity android:name=".demo.online.MainActivity">
         </activity>
         <activity android:name=".demo.car.CarActivity">
+        </activity>
+        <activity android:name=".demo.main.activity.ThemeActivity">
         </activity>
     </application>
 

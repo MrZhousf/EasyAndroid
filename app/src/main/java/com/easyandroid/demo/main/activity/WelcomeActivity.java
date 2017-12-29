@@ -8,6 +8,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -19,13 +22,13 @@ import com.easyandroid.core.base.RxBus;
 import com.easyandroid.core.util.LocationUtil;
 import com.easyandroid.core.util.LogUtil;
 import com.easyandroid.core.util.StringUtil;
-import com.easyandroid.core.util.ThemeManager;
 import com.easyandroid.core.util.ToastUtil;
 import com.easyandroid.core.view.CircleImageView;
 import com.easyandroid.demo.camera.activity.TestCameraActivity;
 import com.easyandroid.demo.car.CarActivity;
 import com.easyandroid.demo.databinding.DataBindingActivity;
 import com.easyandroid.demo.db.TestDBActivity;
+import com.easyandroid.demo.main.adapter.WelcomeAdapter;
 import com.easyandroid.demo.net_speed.NetWorkActivity;
 import com.easyandroid.demo.video.VideoActivity;
 import com.easyandroid.demo.weather.activity.WeatherActivity;
@@ -36,7 +39,6 @@ import com.trello.rxlifecycle.android.ActivityEvent;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.Bind;
-import butterknife.OnClick;
 import rx.Observable;
 
 public class WelcomeActivity extends BaseActivity implements LocationUtil.LocationListener {
@@ -45,9 +47,12 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
     TextView tvLocation;
     @Bind(R.id.fbLocation)
     FloatingActionButton fbLocation;
+    @Bind(R.id.recyclerView)
+    RecyclerView recyclerView;
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
+    private WelcomeAdapter adapter;
 
     @Override
     protected int initLayout() {
@@ -65,49 +70,33 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView();
-//        testRx();
         testRxBus();
-
+        LinearLayoutManager layoutManager = new GridLayoutManager(this,3);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new WelcomeAdapter();
+        recyclerView.setAdapter(adapter);
+        adapter.addItem(new WelcomeAdapter.Info(getString(R.string.weatherDemo),
+                (view)-> startActivity(WeatherActivity.class)));
+        adapter.addItem(new WelcomeAdapter.Info(getString(R.string.cameraDemo),
+                (view)-> startActivity(TestCameraActivity.class)));
+        adapter.addItem(new WelcomeAdapter.Info(getString(R.string.dbDemo),
+                (view)-> startActivity(TestDBActivity.class)));
+        adapter.addItem(new WelcomeAdapter.Info(getString(R.string.dataBindingDemo),
+                (view)-> startActivity(DataBindingActivity.class)));
+        adapter.addItem(new WelcomeAdapter.Info(getString(R.string.networkDemo),
+                (view)-> startActivity(NetWorkActivity.class)));
+        adapter.addItem(new WelcomeAdapter.Info(getString(R.string.amapDemo),
+                (view)-> {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("searchKey","清华大学");
+                    AMapAPI.toPOISearchActivity(this,bundle);
+                }));
+        adapter.addItem(new WelcomeAdapter.Info(getString(R.string.customerDemo),
+                (view)-> startActivity(CarActivity.class)));
+        adapter.addItem(new WelcomeAdapter.Info(getString(R.string.videoDemo),
+                (view)-> startActivity(VideoActivity.class)));
     }
-
-
-    @OnClick({R.id.btnWeather,R.id.btnCamera,R.id.btnDB,R.id.dataBinDemo,R.id.btnNetWork,
-            R.id.btnAmap,R.id.btnCustomer,R.id.btnVideo})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.ivHeadImg_drawer:
-                RxBus.get().post("test",new Info("点击了头像"));
-                break;
-            case R.id.btnWeather:
-                startActivity(WeatherActivity.class);
-                break;
-            case R.id.btnCamera:
-                startActivity(TestCameraActivity.class);
-                break;
-            case R.id.btnDB:
-                startActivity(TestDBActivity.class);
-                break;
-            case R.id.dataBinDemo:
-                startActivity(DataBindingActivity.class);
-                break;
-            case R.id.btnNetWork:
-                startActivity(NetWorkActivity.class);
-                break;
-            case R.id.btnAmap:
-                Bundle bundle = new Bundle();
-                bundle.putString("searchKey","清华大学");
-                AMapAPI.toPOISearchActivity(this,bundle);
-                break;
-            case R.id.btnCustomer:
-                startActivity(CarActivity.class);
-                break;
-            case R.id.btnVideo:
-                startActivity(VideoActivity.class);
-                break;
-
-        }
-    }
-
 
     void testRxBus() {
         RxBus.get().register("test",Info.class).doOnUnsubscribe(()-> LogUtil.i("WelcomeActivity", "退订"))
@@ -188,7 +177,7 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
                         ToastUtil.show(WelcomeActivity.this,getString(R.string.about_author));
                         break;
                     case R.id.navigation_theme:
-                        ThemeManager.get().setCurrentTheme(this,"theme.manager.theme.night");
+                        startActivity(ThemeActivity.class);
                         break;
                 }
                 return true;

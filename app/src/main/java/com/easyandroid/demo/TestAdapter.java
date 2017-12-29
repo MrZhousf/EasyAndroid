@@ -42,7 +42,7 @@ public class TestAdapter extends BaseRecyclerViewAdapter<Integer, RecyclerView.V
         LinearLayout linear_layout;
 
 
-        public TestHolder(View itemView) {
+        private TestHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

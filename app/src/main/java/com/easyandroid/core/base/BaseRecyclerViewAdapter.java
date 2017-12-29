@@ -25,23 +25,22 @@ public abstract class BaseRecyclerViewAdapter<E extends Object,T extends Recycle
 
     @Override
     public void onBindViewHolder(T viewHolder, final int position) {
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mOnItemClickListener) {
+        if (null != mOnItemClickListener) {
+            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
                     mOnItemClickListener.onItemClickRecycler(v, position);
                 }
-            }
-        });
-        viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                if (null != mOnItemLongClickListener) {
+            });
+        }
+        if (null != mOnItemLongClickListener) {
+            viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
                     return mOnItemLongClickListener.onItemLongClickRecycler(v, position);
                 }
-                return false;
-            }
-        });
+            });
+        }
     }
 
     public List<E> getList() {

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <!-- 标题栏-->
+    <include layout="@layout/toolbar_main" />
+
+    <RelativeLayout
+        android:layout_marginTop="?attr/actionBarSize"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/theme_default"
+            android:layout_width="100dp"
+            android:layout_height="180dp"
+            android:layout_margin="10dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="8dp"
+            app:cardBackgroundColor="@color/colorPrimary"
+            android:onClick="changeTheme"
+        >
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点我切换主题"
+                android:textSize="10sp"
+                android:textColor="@color/white"
+            />
+        </android.support.v7.widget.CardView>
+        <TextView
+            android:layout_below="@+id/theme_default"
+            android:layout_alignStart="@+id/theme_default"
+            android:layout_alignEnd="@+id/theme_default"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="默认主题"
+            android:textSize="10sp"
+            android:textColor="@color/colorTextPrimary"
+        />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/theme_night"
+            android:layout_toEndOf="@+id/theme_default"
+            android:layout_width="100dp"
+            android:layout_height="180dp"
+            android:layout_margin="10dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="8dp"
+            app:cardBackgroundColor="@color/color_0176da"
+            android:onClick="changeTheme"
+        >
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点我切换主题"
+                android:textSize="10sp"
+                android:textColor="@color/white"
+            />
+        </android.support.v7.widget.CardView>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_alignStart="@+id/theme_night"
+            android:layout_alignEnd="@+id/theme_night"
+            android:layout_below="@+id/theme_night"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextPrimary"
+            android:text="蓝色主题"
+            android:textSize="10sp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

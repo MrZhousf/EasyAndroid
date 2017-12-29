@@ -32,64 +32,13 @@
                 android:text="@string/currentLocation"
                 />
 
-            <Button
-                android:id="@+id/btnWeather"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextPrimary"
-                android:text="@string/weatherDemo"/>
+                android:layout_height="wrap_content"/>
 
-            <Button
-                android:id="@+id/btnCamera"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextPrimary"
-                android:text="@string/cameraDemo"/>
 
-            <Button
-                android:id="@+id/btnDB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextPrimary"
-                android:text="@string/dbDemo"/>
 
-            <Button
-                android:id="@+id/dataBinDemo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextPrimary"
-                android:textAllCaps="false"
-                android:text="@string/dataBindingDemo"/>
-
-            <Button
-                android:id="@+id/btnNetWork"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextPrimary"
-                android:textAllCaps="false"
-                android:text="@string/networkDemo"/>
-
-            <Button
-                android:id="@+id/btnAmap"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextPrimary"
-                android:textAllCaps="false"
-                android:text="@string/amapDemo"/>
-            <Button
-                android:id="@+id/btnCustomer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextPrimary"
-                android:textAllCaps="false"
-                android:text="@string/customerDemo"/>
-            <Button
-                android:id="@+id/btnVideo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextPrimary"
-                android:textAllCaps="false"
-                android:text="@string/videoDemo"/>
 
 
         </LinearLayout>

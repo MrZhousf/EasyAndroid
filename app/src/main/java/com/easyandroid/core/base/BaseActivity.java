@@ -14,8 +14,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.easyandroid.R;
+import com.easyandroid.core.bean.UpdateThemeEvent;
 import com.easyandroid.core.util.ThemeManager;
 import com.easyandroid.core.util.ToastUtil;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.ButterKnife;
 
@@ -45,16 +50,27 @@ public abstract class BaseActivity extends RxAppCompatActivity implements View.O
     private BaseHandler baseHandler;//Handler句柄
 
     @Override
+    public void setTheme(int resId) {
+        super.setTheme(ThemeManager.get().getCurrentTheme());
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void updateTheme(UpdateThemeEvent event){
+        if(!getClass().getName().equals(event.className)){
+            recreate();
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final int layoutId = initLayout();
-        //设置主题
-        setTheme(ThemeManager.get().getCurrentTheme());
         if(layoutId != 0)
             setContentView(initLayout());
         initTitle(titleBar = new TitleBar());
         ButterKnife.bind(this);
         initToolBar();
+        EventBus.getDefault().register(this);
     }
 
     /**
@@ -160,6 +176,7 @@ public abstract class BaseActivity extends RxAppCompatActivity implements View.O
     @Override
     protected void onDestroy() {
         ButterKnife.unbind(this);
+        EventBus.getDefault().unregister(this);
         if(null != baseHandler)
             baseHandler.removeCallbacksAndMessages(null);
         super.onDestroy();

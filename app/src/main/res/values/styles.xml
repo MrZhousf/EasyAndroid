@@ -1,5 +1,11 @@
 <resources>
 
+
+
+    <style name="startupTheme" parent="Theme.AppCompat">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@mipmap/startup</item>
+    </style>
     <!-- Base application theme. -->
     <style name="ThemeDefault" parent="Theme.AppCompat.Light.DarkActionBar">
         <!--ActionBar的颜色-->
@@ -8,8 +14,11 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <!-- 随主题而改变的颜色（如CheckBox的颜色）-->
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorBackgroundFloating">@color/colorPrimaryLight</item>
         <!--ActionBar标题文字颜色-->
-        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="titleTextColor">@android:color/white</item>
+        <item name="android:textColorPrimary">@color/colorTextPrimary</item>
+        <item name="itemTextColor">@android:color/white</item>
         <!-- 去掉actionbar-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -23,9 +32,11 @@
         <item name="colorPrimaryDark">@color/color_005eaa</item>
         <!-- 随主题而改变的颜色（如CheckBox的颜色）-->
         <item name="colorAccent">@color/color_2095f2</item>
+        <item name="colorBackgroundFloating">@color/color_5cacee</item>
         <!--ActionBar标题文字颜色-->
-        <item name="android:textColorPrimary">@color/gray</item>
-        <!-- 去掉actionbar-->
+        <item name="titleTextColor">@android:color/white</item>
+        <item name="android:textColorPrimary">@color/colorTextPrimary</item>
+        <item name="itemTextColor">@android:color/white</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowAnimationStyle">@style/TranAnimation</item>
@@ -40,12 +51,6 @@
         <item name="android:taskOpenExitAnimation">@null</item>
         <item name="android:taskCloseEnterAnimation">@null</item>
         <item name="android:taskCloseExitAnimation">@null</item>
-    </style>
-
-
-    <style name="startupTheme" parent="Theme.AppCompat">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowBackground">@mipmap/startup</item>
     </style>
 
     <style name="MyToggleButton" parent="@android:style/Widget.CompoundButton">
