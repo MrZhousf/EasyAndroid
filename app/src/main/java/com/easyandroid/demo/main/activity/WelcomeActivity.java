@@ -22,7 +22,7 @@ import com.easyandroid.core.base.RxBus;
 import com.easyandroid.core.util.LocationUtil;
 import com.easyandroid.core.util.LogUtil;
 import com.easyandroid.core.util.StringUtil;
-import com.easyandroid.core.util.ToastUtil;
+import com.easyandroid.core.util.UtilManager;
 import com.easyandroid.core.view.CircleImageView;
 import com.easyandroid.demo.camera.activity.TestCameraActivity;
 import com.easyandroid.demo.car.CarActivity;
@@ -102,7 +102,7 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
         RxBus.get().register("test",Info.class).doOnUnsubscribe(()-> LogUtil.i("WelcomeActivity", "退订"))
                 .compose(bindUntilEvent(ActivityEvent.PAUSE))
                 .subscribe((Info msg)->{
-            ToastUtil.show(this,msg.msg);
+                    UtilManager.Toast.show(this,msg.msg);
         });
     }
 
@@ -166,15 +166,17 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
             ivHeadImg.setOnClickListener(this);
         }
         navigationView.setNavigationItemSelectedListener((MenuItem menuItem)-> {
-                //关闭侧边菜单
-                if(null != drawerLayout)
-                    drawerLayout.closeDrawer(GravityCompat.START);
                 switch (menuItem.getItemId()) {
                     case R.id.navigation_email:
-                        ToastUtil.show(WelcomeActivity.this,getString(R.string.my_email));
+                        //关闭侧边菜单
+                        if(null != drawerLayout)
+                            drawerLayout.closeDrawer(GravityCompat.START);
+                        UtilManager.Toast.show(WelcomeActivity.this,getString(R.string.my_email));
                         break;
                     case R.id.navigation_author:
-                        ToastUtil.show(WelcomeActivity.this,getString(R.string.about_author));
+                        if(null != drawerLayout)
+                            drawerLayout.closeDrawer(GravityCompat.START);
+                        UtilManager.Toast.show(WelcomeActivity.this,getString(R.string.about_author));
                         break;
                     case R.id.navigation_theme:
                         startActivity(ThemeActivity.class);

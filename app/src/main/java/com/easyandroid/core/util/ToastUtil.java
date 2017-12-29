@@ -30,13 +30,16 @@ public class ToastUtil {
     @IntDef({Toast.LENGTH_SHORT, Toast.LENGTH_LONG})
     public @interface Duration {}
 
+    public ToastUtil() {
+
+    }
 
     /**
      * Toast显示
      * @param context 上下文
      * @param text 显示内容
      */
-    public static void show(Context context, String text) {
+    public void show(Context context, String text) {
         show(context, text, null);
     }
 
@@ -45,7 +48,7 @@ public class ToastUtil {
      * @param context 上下文
      * @param resId 显示内容资源
      */
-    public static void show(Context context, int resId) {
+    public void show(Context context, int resId) {
         show(context, context.getResources().getString(resId), null);
     }
 
@@ -55,7 +58,7 @@ public class ToastUtil {
      * @param resId 显示内容资源
      * @param duration 显示时间
      */
-    public static void show(Context context, int resId, int duration) {
+    public void show(Context context, int resId, int duration) {
         show(context, context.getResources().getString(resId), duration);
     }
 
@@ -66,7 +69,7 @@ public class ToastUtil {
      * @param text 显示内容
      * @param duration 显示时间
      */
-    public static void show(Context context,String text,@Duration Integer duration){
+    public void show(Context context,String text,@Duration Integer duration){
         final int myDuration = (duration==null)?Toast.LENGTH_SHORT:duration;
         if (mToast != null) {
             mToast.cancel();
@@ -84,7 +87,7 @@ public class ToastUtil {
      * @param text 显示内容
      * @param view 图片View
      */
-    public static void showWithView(Context context,String text,View view){
+    public void showWithView(Context context,String text,View view){
         showWithView(context,text,null,view);
     }
 
@@ -95,7 +98,7 @@ public class ToastUtil {
      * @param duration 显示时间
      * @param view 图片View
      */
-    public static void showWithView(Context context,String text,@Duration Integer duration,View view){
+    public void showWithView(Context context,String text,@Duration Integer duration,View view){
         final int myDuration = (duration==null)?Toast.LENGTH_SHORT:duration;
         if (mToast != null) {
             mToast.cancel();

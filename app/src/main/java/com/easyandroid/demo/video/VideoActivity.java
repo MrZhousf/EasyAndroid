@@ -10,7 +10,7 @@ import android.widget.SeekBar;
 import com.easyandroid.R;
 import com.easyandroid.core.base.BaseActivity;
 import com.easyandroid.core.util.LogUtil;
-import com.easyandroid.core.util.ToastUtil;
+import com.easyandroid.core.util.UtilManager;
 
 import java.io.IOException;
 
@@ -87,7 +87,7 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener,
                 break;
             case R.id.playBtn:
                 if(!isPrepared){
-                    ToastUtil.show(this,"正在初始化播放器，请稍后再试。");
+                    UtilManager.Toast.show(this,"正在初始化播放器，请稍后再试。");
                     return ;
                 }
                 if(!mediaPlayer.isPlaying()){

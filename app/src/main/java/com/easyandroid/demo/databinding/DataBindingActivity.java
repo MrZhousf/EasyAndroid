@@ -8,7 +8,7 @@ import android.widget.Button;
 import com.easyandroid.R;
 import com.easyandroid.core.base.BaseActivity;
 import com.easyandroid.core.util.LogUtil;
-import com.easyandroid.core.util.ToastUtil;
+import com.easyandroid.core.util.UtilManager;
 import com.easyandroid.databinding.ActivityDatabindingBinding;
 
 import java.util.Date;
@@ -48,7 +48,7 @@ public class DataBindingActivity extends BaseActivity {
     public void onViewClicked(View v) {
         switch (v.getId()){
             case R.id.modifyBtn:
-                ToastUtil.show(this,ViewModelHelper.getInfo().getTitle());
+                UtilManager.Toast.show(this,ViewModelHelper.getInfo().getTitle());
                 LogUtil.d("DataBindingActivity",ViewModelHelper.getInfo().toString());
                 startActivity(BindingActivity.class);
                 break;

@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.easyandroid.R;
 import com.easyandroid.core.bean.UpdateThemeEvent;
 import com.easyandroid.core.util.ThemeManager;
-import com.easyandroid.core.util.ToastUtil;
+import com.easyandroid.core.util.UtilManager;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -138,10 +138,10 @@ public abstract class BaseActivity extends RxAppCompatActivity implements View.O
         }
         switch (item.getItemId()){
             case R.id.action_settings:
-                ToastUtil.show(this,getString(R.string.settings));
+                UtilManager.Toast.show(this,getString(R.string.settings));
                 break;
             case R.id.action_about:
-                ToastUtil.show(this,getString(R.string.about_us));
+                UtilManager.Toast.show(this,getString(R.string.about_us));
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -21,7 +21,7 @@ import com.easyandroid.core.base.BaseActivity;
 import com.easyandroid.core.util.LocationUtil;
 import com.easyandroid.core.util.LogUtil;
 import com.easyandroid.core.util.StringUtil;
-import com.easyandroid.core.util.ToastUtil;
+import com.easyandroid.core.util.UtilManager;
 
 import java.util.List;
 
@@ -155,10 +155,10 @@ public class MainActivity extends BaseActivity implements LocationUtil.LocationL
                 drawerLayout.closeDrawer(GravityCompat.START);
             switch (menuItem.getItemId()) {
                 case R.id.navigation_email:
-                    ToastUtil.show(MainActivity.this,getString(R.string.my_email));
+                    UtilManager.Toast.show(MainActivity.this,getString(R.string.my_email));
                     break;
                 case R.id.navigation_author:
-                    ToastUtil.show(MainActivity.this,getString(R.string.about_author));
+                    UtilManager.Toast.show(MainActivity.this,getString(R.string.about_author));
                     break;
             }
             return true;
