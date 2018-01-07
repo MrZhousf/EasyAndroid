@@ -1,1 +1,1 @@
-include ':app', ':amap'
+include ':app', ':amap', ':core-lib'

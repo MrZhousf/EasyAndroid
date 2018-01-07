@@ -1,4 +1,4 @@
-package com.easyandroid.demo.car;
+package com.easyandroid.demo.customer;
 
 import android.content.Context;
 import android.content.res.ColorStateList;

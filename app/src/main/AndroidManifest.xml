@@ -51,11 +51,11 @@
             android:multiprocess="true"/>
 
         <activity
-            android:name=".demo.main.activity.StartupActivity"
+            android:name=".demo.StartupActivity"
             android:theme="@style/startupTheme">
         </activity>
         <activity
-            android:name=".demo.main.activity.WelcomeActivity"
+            android:name=".demo.WelcomeActivity"
             android:theme="@style/startupTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -71,7 +71,7 @@
             android:value=".demo.ui.activity.SearchResultActivity"/>
 
         <activity
-            android:name=".demo.main.activity.SearchResultActivity"
+            android:name=".demo.SearchResultActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH"/>
@@ -85,13 +85,13 @@
         <activity
             android:name=".demo.camera.activity.CameraActivity"
             android:screenOrientation="landscape"/>
-        <activity android:name=".demo.db.TestDBActivity">
+        <activity android:name=".demo.db.ORMLiteActivity">
         </activity>
         <activity android:name=".demo.databinding.DataBindingActivity">
         </activity>
         <activity android:name=".demo.databinding.BindingActivity">
         </activity>
-        <activity android:name=".SchemeActivity">
+        <activity android:name=".demo.SchemeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
 
@@ -101,8 +101,6 @@
                 <data android:scheme="scheme"/>
             </intent-filter>
         </activity>
-        <activity android:name=".demo.TestActivity">
-        </activity>
         <activity android:name=".demo.net_speed.NetWorkActivity">
         </activity>
 
@@ -111,9 +109,11 @@
         <activity android:name=".demo.video.VideoActivity"/>
         <activity android:name=".demo.online.MainActivity">
         </activity>
-        <activity android:name=".demo.car.CarActivity">
+        <activity android:name=".demo.customer.CarActivity">
         </activity>
-        <activity android:name=".demo.main.activity.ThemeActivity">
+        <activity android:name=".demo.ThemeActivity">
+        </activity>
+        <activity android:name=".demo.db.ObjectBoxActivity">
         </activity>
     </application>
 

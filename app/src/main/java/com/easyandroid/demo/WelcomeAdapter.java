@@ -1,4 +1,4 @@
-package com.easyandroid.demo.main.adapter;
+package com.easyandroid.demo;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;

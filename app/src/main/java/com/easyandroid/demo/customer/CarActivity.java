@@ -1,4 +1,4 @@
-package com.easyandroid.demo.car;
+package com.easyandroid.demo.customer;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

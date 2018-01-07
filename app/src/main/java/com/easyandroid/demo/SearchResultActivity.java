@@ -1,4 +1,4 @@
-package com.easyandroid.demo.main.activity;
+package com.easyandroid.demo;
 
 import android.app.SearchManager;
 import android.os.Bundle;

@@ -4,7 +4,7 @@ import android.support.multidex.MultiDexApplication;
 
 import com.easyandroid.R;
 import com.easyandroid.core.util.ThemeManager;
-import com.easyandroid.demo.main.util.CrashApphandler;
+import com.easyandroid.core.util.CrashApphandler;
 
 /**
  * @author : zhousf

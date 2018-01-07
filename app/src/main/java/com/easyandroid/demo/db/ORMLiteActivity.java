@@ -18,7 +18,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class TestDBActivity extends BaseActivity {
+public class ORMLiteActivity extends BaseActivity {
 
     private final String TAG = this.getClass().getSimpleName();
 

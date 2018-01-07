@@ -1,4 +1,4 @@
-package com.easyandroid.demo.main.activity;
+package com.easyandroid.demo;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -25,10 +25,9 @@ import com.easyandroid.core.util.StringUtil;
 import com.easyandroid.core.util.UtilManager;
 import com.easyandroid.core.view.CircleImageView;
 import com.easyandroid.demo.camera.activity.TestCameraActivity;
-import com.easyandroid.demo.car.CarActivity;
+import com.easyandroid.demo.customer.CarActivity;
 import com.easyandroid.demo.databinding.DataBindingActivity;
-import com.easyandroid.demo.db.TestDBActivity;
-import com.easyandroid.demo.main.adapter.WelcomeAdapter;
+import com.easyandroid.demo.db.ORMLiteActivity;
 import com.easyandroid.demo.net_speed.NetWorkActivity;
 import com.easyandroid.demo.video.VideoActivity;
 import com.easyandroid.demo.weather.activity.WeatherActivity;
@@ -81,7 +80,7 @@ public class WelcomeActivity extends BaseActivity implements LocationUtil.Locati
         adapter.addItem(new WelcomeAdapter.Info(getString(R.string.cameraDemo),
                 (view)-> startActivity(TestCameraActivity.class)));
         adapter.addItem(new WelcomeAdapter.Info(getString(R.string.dbDemo),
-                (view)-> startActivity(TestDBActivity.class)));
+                (view)-> startActivity(ORMLiteActivity.class)));
         adapter.addItem(new WelcomeAdapter.Info(getString(R.string.dataBindingDemo),
                 (view)-> startActivity(DataBindingActivity.class)));
         adapter.addItem(new WelcomeAdapter.Info(getString(R.string.networkDemo),

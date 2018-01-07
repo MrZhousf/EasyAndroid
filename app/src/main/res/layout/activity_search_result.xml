@@ -5,7 +5,7 @@
     android:id="@+id/activity_search_result"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".demo.main.activity.SearchResultActivity">
+    tools:context=".demo.SearchResultActivity">
 
     <!-- 标题栏-->
     <include layout="@layout/toolbar_main" />

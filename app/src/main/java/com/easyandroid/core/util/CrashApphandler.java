@@ -1,4 +1,4 @@
-package com.easyandroid.demo.main.util;
+package com.easyandroid.core.util;
 
 import android.os.Environment;
 import android.util.Log;
