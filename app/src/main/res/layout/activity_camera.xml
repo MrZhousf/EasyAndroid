@@ -5,12 +5,12 @@
 
     android:orientation="vertical">
 
-    <com.easyandroid.demo.camera.view.MaskSurfaceView
+    <com.easy.app.demo.camera.view.MaskSurfaceView
         android:id="@+id/surface_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-    </com.easyandroid.demo.camera.view.MaskSurfaceView>
+    </com.easy.app.demo.camera.view.MaskSurfaceView>
 
 
     <RelativeLayout
@@ -29,7 +29,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
-        <com.easyandroid.demo.camera.view.CameraFocusView
+        <com.easy.app.demo.camera.view.CameraFocusView
             android:id="@+id/viewFocuse"
             android:layout_width="240dp"
             android:layout_height="400dp"

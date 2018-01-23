@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     >
 
-    <com.easyandroid.demo.customer.CarRelativeLayout
+    <com.easy.app.demo.customer.CarRelativeLayout
         android:id="@+id/car_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/left_ll">
-            <com.easyandroid.demo.customer.CarImageView
+            <com.easy.app.demo.customer.CarImageView
                 android:id="@+id/img4_iv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -26,7 +26,7 @@
 
         </RelativeLayout>
 
-        <com.easyandroid.demo.customer.CarImageView
+        <com.easy.app.demo.customer.CarImageView
             android:id="@+id/img5_iv"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -39,14 +39,14 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/left_ll"
             android:id="@+id/center_ll">
-        <com.easyandroid.demo.customer.CarImageView
+        <com.easy.app.demo.customer.CarImageView
             android:id="@+id/img_iv"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@mipmap/medical_male_front_head"
         />
 
-        <com.easyandroid.demo.customer.CarImageView
+        <com.easy.app.demo.customer.CarImageView
             android:id="@+id/img2_iv"
             android:layout_below="@+id/img_iv"
             android:layout_width="100dp"
@@ -54,7 +54,7 @@
             android:src="@mipmap/medical_male_front_neck"
         />
 
-        <com.easyandroid.demo.customer.CarImageView
+        <com.easy.app.demo.customer.CarImageView
             android:id="@+id/img3_iv"
             android:layout_below="@+id/img2_iv"
             android:layout_width="100dp"
@@ -64,7 +64,7 @@
 
         </RelativeLayout>
 
-    </com.easyandroid.demo.customer.CarRelativeLayout>
+    </com.easy.app.demo.customer.CarRelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

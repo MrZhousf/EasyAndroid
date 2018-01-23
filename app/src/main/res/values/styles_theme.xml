@@ -1,0 +1,76 @@
+<resources>
+
+    <!-- 预定义主题样式-->
+    <declare-styleable name="theme_style">
+        <attr name="title_text_color" format="reference|color"/>
+        <attr name="theme_color" format="reference|color"/>
+        <attr name="theme_color_primary" format="reference|color"/>
+        <attr name="background_color" format="reference|color"/>
+    </declare-styleable>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- 去掉actionbar-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:windowAnimationStyle">@style/TranAnimation.Translucent</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="ThemeDefault" parent="AppTheme.Base">
+        <!--ActionBar的颜色-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--状态栏的颜色 -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- 随主题而改变的颜色（如CheckBox的颜色）-->
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorBackgroundFloating">@color/colorPrimaryLight</item>
+        <!--ActionBar标题文字颜色-->
+        <item name="itemTextColor">@android:color/white</item>
+        <!-- 预定义主题样式-->
+        <item name="title_text_color">@color/colorTextPrimary</item>
+        <item name="theme_color">@color/colorPrimary</item>
+        <item name="theme_color_primary">@color/color_4bae4f</item>
+        <item name="background_color">@color/gray</item>
+
+    </style>
+
+    <style name="ThemeNight" parent="AppTheme.Base">
+        <item name="colorPrimary">@color/color_0176da</item>
+        <item name="colorPrimaryDark">@color/color_005eaa</item>
+        <item name="colorAccent">@color/color_2095f2</item>
+        <item name="colorBackgroundFloating">@color/color_5cacee</item>
+        <item name="itemTextColor">@android:color/white</item>
+        <!-- 预定义主题样式-->
+        <item name="title_text_color">@color/colorTextPrimary</item>
+        <item name="theme_color">@color/color_0176da</item>
+        <item name="theme_color_primary">@color/color_5cacee</item>
+        <item name="background_color">@color/gray</item>
+    </style>
+
+    <style name="TranAnimation.Activity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@null</item>
+        <item name="android:taskOpenEnterAnimation">@null</item>
+        <item name="android:taskOpenExitAnimation">@null</item>
+        <item name="android:taskCloseEnterAnimation">@null</item>
+        <item name="android:taskCloseExitAnimation">@null</item>
+    </style>
+
+
+    <style name="TranAnimation.Translucent" parent="@android:style/Animation.Translucent">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+    <style name="startupTheme" parent="Theme.AppCompat">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@mipmap/startup</item>
+    </style>
+
+
+
+</resources>

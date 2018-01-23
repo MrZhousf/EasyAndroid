@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".demo.weather.activity.WeatherActivity">
+    tools:context=".app.demo.weather.activity.WeatherActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
