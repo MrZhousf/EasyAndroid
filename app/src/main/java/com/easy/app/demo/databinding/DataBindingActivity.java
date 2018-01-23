@@ -2,6 +2,7 @@ package com.easy.app.demo.databinding;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
@@ -30,9 +31,10 @@ public class DataBindingActivity extends BaseActivity<TitleBar> {
 
     @Override
     protected Object initLayout() {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_databinding);
+        bindView = LayoutInflater.from(this).inflate(R.layout.activity_databinding,null,false);
+        binding = DataBindingUtil.bind(bindView);
         binding.setInfo(ViewModelHelper.getInfo());
-        return binding;
+        return bindView;
     }
 
 
