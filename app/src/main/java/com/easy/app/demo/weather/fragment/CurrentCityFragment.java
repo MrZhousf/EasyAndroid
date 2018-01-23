@@ -9,17 +9,16 @@ import android.view.View;
 
 import com.amap.api.location.AMapLocation;
 import com.easy.R;
-import com.easy.app.core.http.ApiSubscriber;
 import com.easy.app.core.base.BaseRefreshFragment;
+import com.easy.app.core.http.ApiSubscriber;
 import com.easy.app.core.http.Repository;
 import com.easy.app.core.util.LocationUtil;
-import com.easy.app.core.util.LogUtil;
-import com.easy.app.core.util.SPUtil;
 import com.easy.app.core.util.StringUtil;
 import com.easy.app.core.view.LoadingDialog;
 import com.easy.app.core.view.swiperefreshlayout.SwipeRefreshLayoutDirection;
 import com.easy.app.demo.weather.adapter.WeatherAdapter;
 import com.easy.app.demo.weather.bean.Weather;
+import com.easy.lib.util.Util;
 import com.google.gson.Gson;
 import com.okhttplib.HttpInfo;
 import com.okhttplib.OkHttpUtil;
@@ -129,7 +128,7 @@ public class CurrentCityFragment extends BaseRefreshFragment implements Location
                     }
                 }catch (Exception e){
                     toast("解析数据失败");
-                    LogUtil.e("CurrentCityFragment","解析数据失败"+e.getMessage());
+                    Util.Log.e("CurrentCityFragment","解析数据失败"+e.getMessage());
                 }
             }
 
@@ -174,20 +173,20 @@ public class CurrentCityFragment extends BaseRefreshFragment implements Location
      * 初始化天气图标映射关系
      */
     void initIcon(){
-        SPUtil.getInstance().put("未知", R.mipmap.type_two_sunny);
-        SPUtil.getInstance().put("晴", R.mipmap.type_two_sunny);
-        SPUtil.getInstance().put("阴", R.mipmap.type_two_cloudy);
-        SPUtil.getInstance().put("多云", R.mipmap.type_two_cloudy);
-        SPUtil.getInstance().put("少云", R.mipmap.type_two_cloudy);
-        SPUtil.getInstance().put("晴间多云", R.mipmap.type_two_cloudytosunny);
-        SPUtil.getInstance().put("小雨", R.mipmap.type_two_light_rain);
-        SPUtil.getInstance().put("中雨", R.mipmap.type_two_heavy_rain);
-        SPUtil.getInstance().put("大雨", R.mipmap.type_two_heavy_rain);
-        SPUtil.getInstance().put("阵雨", R.mipmap.type_two_thunder_rain);
-        SPUtil.getInstance().put("雷阵雨", R.mipmap.type_two_thunderstorm);
-        SPUtil.getInstance().put("霾", R.mipmap.type_two_haze);
-        SPUtil.getInstance().put("雾", R.mipmap.type_two_fog);
-        SPUtil.getInstance().put("雨夹雪", R.mipmap.type_two_light_rain);
+        Util.SP.weather().put("未知", R.mipmap.type_two_sunny);
+        Util.SP.weather().put("晴", R.mipmap.type_two_sunny);
+        Util.SP.weather().put("阴", R.mipmap.type_two_cloudy);
+        Util.SP.weather().put("多云", R.mipmap.type_two_cloudy);
+        Util.SP.weather().put("少云", R.mipmap.type_two_cloudy);
+        Util.SP.weather().put("晴间多云", R.mipmap.type_two_cloudytosunny);
+        Util.SP.weather().put("小雨", R.mipmap.type_two_light_rain);
+        Util.SP.weather().put("中雨", R.mipmap.type_two_heavy_rain);
+        Util.SP.weather().put("大雨", R.mipmap.type_two_heavy_rain);
+        Util.SP.weather().put("阵雨", R.mipmap.type_two_thunder_rain);
+        Util.SP.weather().put("雷阵雨", R.mipmap.type_two_thunderstorm);
+        Util.SP.weather().put("霾", R.mipmap.type_two_haze);
+        Util.SP.weather().put("雾", R.mipmap.type_two_fog);
+        Util.SP.weather().put("雨夹雪", R.mipmap.type_two_light_rain);
     }
 
     /**

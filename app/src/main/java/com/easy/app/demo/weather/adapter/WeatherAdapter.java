@@ -11,10 +11,10 @@ import android.widget.TextView;
 import com.easy.R;
 import com.easy.app.core.base.BaseRecyclerViewAdapter;
 import com.easy.app.core.util.GlideUtil;
-import com.easy.app.core.util.SPUtil;
 import com.easy.app.core.util.StringUtil;
 import com.easy.app.demo.weather.bean.Weather;
 import com.easy.app.demo.weather.util.DateUtil;
+import com.easy.lib.util.Util;
 
 import java.util.List;
 
@@ -129,7 +129,7 @@ public class WeatherAdapter extends BaseRecyclerViewAdapter<Weather, RecyclerVie
                 tempPm.setText(String.format("PM2.5: %s μg/m³", StringUtil.safeText(weather.aqi.city.pm25)));
                 tempQuality.setText(StringUtil.safeText("空气质量： ", weather.aqi.city.qlty));
                 GlideUtil.loadImg(weatherIcon,
-                        SPUtil.getInstance().getInt(weather.now.cond.txt, R.mipmap.type_two_sunny)
+                        Util.SP.weather().getInt(weather.now.cond.txt, R.mipmap.type_two_sunny)
                 );
             } catch (Exception e) {
                 e.printStackTrace();
@@ -216,7 +216,7 @@ public class WeatherAdapter extends BaseRecyclerViewAdapter<Weather, RecyclerVie
                             tvDate[i].setText(DateUtil.timeToWeek(weather.dailyForecast.get(i).date));
                         }
                         GlideUtil.loadImg(ivIcon[i],
-                                SPUtil.getInstance().getInt(weather.dailyForecast.get(i).cond.txtD, R.mipmap.type_two_sunny));
+                                Util.SP.weather().getInt(weather.dailyForecast.get(i).cond.txtD, R.mipmap.type_two_sunny));
                         tvTemp[i].setText(
                                 String.format("%s℃ - %s℃",
                                         weather.dailyForecast.get(i).tmp.min,

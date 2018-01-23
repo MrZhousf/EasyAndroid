@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
 
-import com.easy.app.core.util.LogUtil;
+import com.easy.lib.util.Util;
 
 /**
  * Author : zhousf
@@ -65,23 +65,23 @@ public class VideoSurfaceView extends SurfaceView implements View.OnTouchListene
 
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-            LogUtil.d(TAG,"onScroll");
+            Util.Log.d(TAG,"onScroll");
             float difX = e1.getX() - e2.getX();
             float difY = e1.getY() - e2.getY();
             if(Math.abs(difX) > Math.abs(difY)){
                 //x轴滑动
                 if (e1.getX() - e2.getX() > 0) {
-                    LogUtil.d(TAG,"向左");
+                    Util.Log.d(TAG,"向左");
                 } else if (e2.getX() - e1.getX() > 0) {
-                    LogUtil.d(TAG,"向右");
+                    Util.Log.d(TAG,"向右");
                 }
             }else{
                 //y轴滑动
                 if(e1.getY() - e2.getY() > 0){
-                    LogUtil.d(TAG,"向上");
+                    Util.Log.d(TAG,"向上");
                     raiseVolume();
                 } else if(e2.getY() - e1.getY() > 0){
-                    LogUtil.d(TAG,"向下");
+                    Util.Log.d(TAG,"向下");
                     lowerVolume();
                 }
 
@@ -91,23 +91,23 @@ public class VideoSurfaceView extends SurfaceView implements View.OnTouchListene
 
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            LogUtil.d(TAG,"onFling");
+            Util.Log.d(TAG,"onFling");
 //            float difX = e1.getX() - e2.getX();
 //            float difY = e1.getY() - e2.getY();
 //            if(Math.abs(difX) > Math.abs(difY)){
 //                //x轴滑动
 //                if (e1.getX() - e2.getX() > 0) {
-//                    LogUtil.d(TAG,"向左"+velocityX);
+//                    Util.Log.d(TAG,"向左"+velocityX);
 //                } else if (e2.getX() - e1.getX() > 0) {
-//                    LogUtil.d(TAG,"向右"+velocityX);
+//                    Util.Log.d(TAG,"向右"+velocityX);
 //                }
 //            }else{
 //                //y轴滑动
 //                if(e1.getY() - e2.getY() > 0){
-//                    LogUtil.d(TAG,"向上"+velocityY);
+//                    Util.Log.d(TAG,"向上"+velocityY);
 //                    raiseVolume();
 //                } else if(e2.getY() - e1.getY() > 0){
-//                    LogUtil.d(TAG,"向下"+velocityY);
+//                    Util.Log.d(TAG,"向下"+velocityY);
 //                    lowerVolume();
 //                }
 //

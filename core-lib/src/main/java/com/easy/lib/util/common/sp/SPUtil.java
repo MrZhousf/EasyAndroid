@@ -15,5 +15,14 @@ public class SPUtil {
     }
 
 
+    /**
+     * 天气SP定制
+     */
+    public CoreSharePreference weather(){
+        return new CoreSharePreference(CoreApplication.get().getSharedPreferences("sp_core_weather", Context.MODE_PRIVATE));
+    }
+
+
+
 
 }

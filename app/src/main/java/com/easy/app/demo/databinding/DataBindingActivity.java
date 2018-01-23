@@ -8,7 +8,6 @@ import android.widget.Button;
 import com.easy.R;
 import com.easy.app.core.base.BaseActivity;
 import com.easy.app.core.plugin.title.TitleBar;
-import com.easy.app.core.util.LogUtil;
 import com.easy.databinding.ActivityDatabindingBinding;
 import com.easy.lib.util.Util;
 
@@ -51,7 +50,7 @@ public class DataBindingActivity extends BaseActivity<TitleBar> {
         switch (v.getId()){
             case R.id.modifyBtn:
                 Util.Toast.show(this,ViewModelHelper.getInfo().getTitle());
-                LogUtil.d("DataBindingActivity",ViewModelHelper.getInfo().toString());
+                Util.Log.d("DataBindingActivity",ViewModelHelper.getInfo().toString());
                 startActivity(BindingActivity.class);
                 break;
 
@@ -61,7 +60,7 @@ public class DataBindingActivity extends BaseActivity<TitleBar> {
     @Override
     protected void onResume() {
         super.onResume();
-        LogUtil.d("DataBindingActivity",ViewModelHelper.getInfo().toString());
+        Util.Log.d("DataBindingActivity",ViewModelHelper.getInfo().toString());
     }
 
 

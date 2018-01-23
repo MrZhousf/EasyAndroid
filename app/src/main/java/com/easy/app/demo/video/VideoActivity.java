@@ -10,7 +10,6 @@ import android.widget.SeekBar;
 import com.easy.R;
 import com.easy.app.core.base.BaseActivity;
 import com.easy.app.core.plugin.title.TitleBar;
-import com.easy.app.core.util.LogUtil;
 import com.easy.lib.util.Util;
 
 import java.io.IOException;
@@ -121,7 +120,7 @@ public class VideoActivity extends BaseActivity<TitleBar> implements View.OnClic
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
         isSeeking = true;
-        LogUtil.d(TAG,"onStartTrackingTouch "+seekBar.getProgress());
+        Util.Log.d(TAG,"onStartTrackingTouch "+seekBar.getProgress());
         if(mediaPlayer.isPlaying()){
             mediaPlayer.pause();
         }
@@ -130,14 +129,14 @@ public class VideoActivity extends BaseActivity<TitleBar> implements View.OnClic
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
         isSeeking = false;
-        LogUtil.d(TAG,"onStopTrackingTouch "+seekBar.getProgress());
+        Util.Log.d(TAG,"onStopTrackingTouch "+seekBar.getProgress());
         mediaPlayer.seekTo(seekBar.getProgress());
         mediaPlayer.start();
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        LogUtil.d(TAG,"surfaceCreated");
+        Util.Log.d(TAG,"surfaceCreated");
         mediaPlayer.setDisplay(holder);
         //开启异步准备
         mediaPlayer.prepareAsync();
@@ -145,12 +144,12 @@ public class VideoActivity extends BaseActivity<TitleBar> implements View.OnClic
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        LogUtil.d(TAG,"surfaceChanged");
+        Util.Log.d(TAG,"surfaceChanged");
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        LogUtil.d(TAG,"surfaceDestroyed");
+        Util.Log.d(TAG,"surfaceDestroyed");
         if(mediaPlayer.isPlaying()){
             mediaPlayer.pause();
         }
@@ -168,7 +167,7 @@ public class VideoActivity extends BaseActivity<TitleBar> implements View.OnClic
 
     @Override
     public void onPrepared(IMediaPlayer iMediaPlayer) {
-        LogUtil.d(TAG,"onPrepared");
+        Util.Log.d(TAG,"onPrepared");
         isPrepared = true;
         seekBar.setMax((int)iMediaPlayer.getDuration());
         handler.post(runnable);

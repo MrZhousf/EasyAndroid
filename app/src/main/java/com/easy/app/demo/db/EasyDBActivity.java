@@ -7,8 +7,8 @@ import android.widget.TextView;
 import com.easy.R;
 import com.easy.app.core.base.BaseActivity;
 import com.easy.app.core.plugin.title.TitleBar;
-import com.easy.app.core.util.LogUtil;
 import com.easy.app.demo.db.model.SimpleData;
+import com.easy.lib.util.Util;
 import com.easydblib.dao.DBDao;
 import com.easydblib.helper.DBHelper;
 import com.easydblib.info.WhereInfo;
@@ -114,7 +114,7 @@ public class EasyDBActivity extends BaseActivity<TitleBar> {
             builder.append(d.toString());
             builder.append("\n");
         }
-        LogUtil.d("orm", builder.toString());
+        Util.Log.d("orm", builder.toString());
         tvResult.setText(builder.toString());
     }
 

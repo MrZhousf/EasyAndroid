@@ -20,7 +20,6 @@ import com.easy.R;
 import com.easy.amap.AMapAPI;
 import com.easy.app.core.base.HomeActivity;
 import com.easy.app.core.util.LocationUtil;
-import com.easy.app.core.util.LogUtil;
 import com.easy.app.core.util.StringUtil;
 import com.easy.app.core.view.CircleImageView;
 import com.easy.app.demo.camera.activity.TestCameraActivity;
@@ -188,9 +187,9 @@ public class WelcomeActivity extends HomeActivity implements LocationUtil.Locati
 
     void testRx(){
         Observable.interval(1, TimeUnit.SECONDS)
-                .doOnUnsubscribe(()-> LogUtil.i("WelcomeActivity", "退订"))
+                .doOnUnsubscribe(()-> Util.Log.i("WelcomeActivity", "退订"))
                 .compose(bindUntilEvent(ActivityEvent.PAUSE))
-                .subscribe((Long num) -> LogUtil.i("WelcomeActivity", "订阅: " + num));
+                .subscribe((Long num) -> Util.Log.i("WelcomeActivity", "订阅: " + num));
     }
 
     @Override
