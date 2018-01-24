@@ -99,6 +99,8 @@
         </activity>
         <activity android:name="com.easy.app.demo.ThemeActivity">
         </activity>
+        <activity android:name=".app.demo.TrackNodeActivity"/>
+        <activity android:name=".app.demo.JumpActivity"/>
     </application>
 
 </manifest>

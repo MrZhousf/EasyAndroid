@@ -24,6 +24,10 @@ public class CoreActivity<T> extends FragmentActivity{
     private List<Fragment> currentFragments;
     private Fragment currentFragment;
     protected T titleBar;
+    //是否为跟踪节点
+    private boolean trackNode = false;
+    private final int TRACK_NODE_REQUEST_CODE = 65535;
+    private final int TRACK_NODE_RESULT_CODE = 65534;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,15 +38,11 @@ public class CoreActivity<T> extends FragmentActivity{
 
 
     protected void startActivity(Class<?> cls){
-        Intent intent = new Intent(this,cls);
-        super.startActivity(intent);
+        startActivity(cls,null);
     }
 
     protected void startActivity(Class<?> cls,Bundle bundle){
-        Intent intent = new Intent(this,cls);
-        if(null != bundle)
-            intent.putExtras(bundle);
-        super.startActivity(intent);
+        startActivityForResult(cls,TRACK_NODE_REQUEST_CODE,bundle);
     }
 
     protected void startActivityForResult(Class<?> cls, int requestCode){
@@ -55,6 +55,33 @@ public class CoreActivity<T> extends FragmentActivity{
             intent.putExtras(bundle);
         super.startActivityForResult(intent, requestCode);
     }
+
+
+    /**
+     * 打开跟踪节点
+     */
+    protected void trackNodeOpen(){
+        trackNode = true;
+    }
+
+    /**
+     * 关闭跟踪节点，自动退栈至打开跟踪节点位置
+     */
+    public void trackNodeClose(){
+        setResult(TRACK_NODE_RESULT_CODE);
+        onBackPressed();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == TRACK_NODE_RESULT_CODE && !trackNode){
+            setResult(TRACK_NODE_RESULT_CODE);
+            onBackPressed();
+        }
+    }
+
+
 
     /**
      * 加载Fragment

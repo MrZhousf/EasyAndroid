@@ -110,6 +110,9 @@ public abstract class BaseActivity<T> extends CoreActivity<T> implements View.On
         } else if(view instanceof View){
             bindView = (View) view;
             setContentView(0);
+        }else {
+            Util.Toast.show(this,getString(R.string.init_layout_failed));
+            Util.Log.e(TAG,getString(R.string.init_layout_failed));
         }
     }
 

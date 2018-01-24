@@ -6,13 +6,25 @@
     android:background="?attr/colorPrimary"
     >
     <ImageView
-        android:id="@+id/back_iv"
+        android:id="@+id/title_back_btn"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:src="@mipmap/back"
         android:layout_centerVertical="true"
         android:layout_marginStart="10dp"
         />
+    <TextView
+        android:id="@+id/title_left_close_btn"
+        android:layout_toEndOf="@+id/title_back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:layout_marginStart="15dp"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="@dimen/title_bar_font_size"
+        android:text="关闭"
+    />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -29,14 +41,14 @@
         />
     </LinearLayout>
     <TextView
-        android:id="@+id/right_btn"
+        android:id="@+id/title_right_btn"
         android:layout_alignParentEnd="true"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:gravity="center_vertical"
         android:layout_marginEnd="10dp"
-        android:textColor="?attr/theme_color"
+        android:textColor="@color/colorTextPrimary"
         android:textSize="@dimen/title_bar_font_size"
     />
     <View

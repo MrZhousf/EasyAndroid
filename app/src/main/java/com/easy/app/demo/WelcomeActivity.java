@@ -92,6 +92,8 @@ public class WelcomeActivity extends HomeActivity implements LocationUtil.Locati
                 (view)-> startActivity(CarActivity.class)));
         adapter.addItem(new WelcomeAdapter.Info(getString(R.string.videoDemo),
                 (view)-> startActivity(VideoActivity.class)));
+        adapter.addItem(new WelcomeAdapter.Info(getString(R.string.trackNodeDemo),
+                (view)-> startActivity(TrackNodeActivity.class)));
     }
 
     void initView(){
